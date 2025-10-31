@@ -223,7 +223,7 @@ a:hover {
 }
 
 .avatar .nickname {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 600;
   color: var(--color-text-a);
   padding-top: 10px;

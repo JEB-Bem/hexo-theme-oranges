@@ -27,7 +27,7 @@ favicon:
 # 用户头像与昵称
 avatar:
   author_photo: /images/avatar.png
-  author_nickname: Oranges
+  author_nickname: <span style="color:#86bdf3;"><i>JEB</i></span>em
   path: /
 
 # Google 分析
@@ -178,7 +178,7 @@ footer:
     # 一般用来显示根据各种场景需要切换的文本，如时间年份
     # 如：{thisYear} 会被替换为今年年份
     -
-      name: Copyright © {thisYear} JEB-Bem
+      name: © 2024-{thisYear} 星潮星屿 版权所有
       path: https://github.com/JEB-Bem/JBlog
     -
       name: Theme by Oranges | Powered by Hexo
