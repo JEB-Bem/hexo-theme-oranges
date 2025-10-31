@@ -195,7 +195,7 @@ pre .javascript .function {
 
 .markdown-body .highlight {
   color: #ccc;
-  /*background-color: #2d2d2d;*/
+  background-color: none;
   border-radius: 5px;
 }
 
