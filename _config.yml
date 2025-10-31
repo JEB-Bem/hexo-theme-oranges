@@ -36,7 +36,7 @@ avatar:
 # 如之前已有注册账号，在管理/跟踪信息/跟踪代码/找到跟踪ID，一般格式为UA-xxxxxxx-x
 gtag:
   enable: false
-  gtagkey: UA-xxxxxxx-x
+  gtagkey: G-V5HWSLR4KF
 
 # 文章评论系统
 comments:
@@ -91,7 +91,7 @@ navbar:
     key: archives
   -
     name: Categories
-    enable: false
+    enable: true
     path: /categories/
     key: categories
   -
@@ -101,7 +101,7 @@ navbar:
     key: tags
   -
     name: Friends
-    enable: true
+    enable: false
     path: /friends/
     key: friends
   -
@@ -145,7 +145,7 @@ footer:
     -
       name: github
       icon: github
-      path: https://github.com/zchengsite/hexo-theme-oranges
+      path: https://github.com/JEB-Bem
     # -
     #   name: email
     #   icon: envelope
@@ -178,8 +178,8 @@ footer:
     # 一般用来显示根据各种场景需要切换的文本，如时间年份
     # 如：{thisYear} 会被替换为今年年份
     -
-      name: Copyright © {thisYear} Oranges
-      path: https://github.com/zchengsite/hexo-theme-oranges
+      name: Copyright © {thisYear} JEB-Bem
+      path: https://github.com/JEB-Bem/JBlog
     -
       name: Theme by Oranges | Powered by Hexo
       path: https://github.com/zchengsite/hexo-theme-oranges
@@ -187,7 +187,7 @@ footer:
   # 浏览量统计
   # http://busuanzi.ibruce.info/
   views:
-    enable: false
+    enable: true
     provider: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'
     item:
       -
@@ -208,7 +208,7 @@ footer:
 
 # 文章搜索
 search:
-  enable: true
+  enable: false
   placeholder: 
 
 # 深/浅配色切换
@@ -217,7 +217,7 @@ colorSwitch:
 
 # 文章分享
 postShare:
-  enable: true
+  enable: false
 
   twitter:
     enable: true
