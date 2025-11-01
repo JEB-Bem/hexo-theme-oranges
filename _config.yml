@@ -178,8 +178,8 @@ footer:
     # 一般用来显示根据各种场景需要切换的文本，如时间年份
     # 如：{thisYear} 会被替换为今年年份
     -
-      name: © 2024-{thisYear} 星潮星屿 版权所有
-      path: https://github.com/JEB-Bem/JBlog
+      name: Create Common License BY-NC-ND 4.0
+      path: https://creativecommons.org/licenses/by-nc-nd/4.0/
     -
       name: Theme by Oranges | Powered by Hexo
       path: https://github.com/zchengsite/hexo-theme-oranges
@@ -251,7 +251,7 @@ cdns:
     enable: false
     url:
       css: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
-      js: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
+      s: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
 
   # LaTeX 公式
   mathjax:
@@ -280,4 +280,4 @@ cdns:
       url: https://cdn.jsdelivr.net/npm/@waline/client@2.5.1/dist/legacy.min.js
 
 # 主题色
-themeColor: '#808080'
+themeColor: '#86bdf3'
