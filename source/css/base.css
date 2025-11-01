@@ -238,6 +238,15 @@ a:hover {
   padding: 1px auto;
 }
 
+.website-name {
+  display: flex;               /* 启用弹性布局 */
+  align-items: center;         /* 垂直居中 */
+  justify-content: center;     /* 水平居中 */
+  height: 4rem;
+  margin: 1rem 0 0 0;
+  padding: 1px auto;
+}
+
 .content {
   clear: both;
   padding: 0 20px;
