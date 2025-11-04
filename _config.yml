@@ -38,6 +38,10 @@ gtag:
   enable: true
   gtagkey: G-V5HWSLR4KF
 
+baidu_s:
+  enable: true
+  key: codeva-MVleS2jmU1
+
 # 文章评论系统
 comments:
   enable: true

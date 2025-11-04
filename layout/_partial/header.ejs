@@ -94,6 +94,10 @@
     </script>
   <% } %>
 
+  <% if(theme.baidu_s.enable) { %>
+    <meta name="baidu-site-verification" content="<%= theme.baidu_s.key %>" />
+  <% } %>
+
   <% if (theme.footer.views && theme.footer.views.enable) { %>
     <script async src="<%- theme.footer.views.provider %>"></script>
   <% } %>
