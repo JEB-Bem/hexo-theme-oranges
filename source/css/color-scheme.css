@@ -9,6 +9,8 @@
   --color-text-md-title: #24292e;
   --color-text-md-content: #24292e;
   --color-text-md-code: #e96900;
+  --code-background: #f8f8f8;
+  --color-text-code: #6c6c6c;
   --bg-text-md-code: #f8f8f8;
   --bg-block-md-quote: #EEEEEE;
   --color-block-md-quote: #555555;
@@ -42,6 +44,8 @@
   --color-text-md-title: #eceff4;
   --color-text-md-content: #eceff4;
   --color-text-md-code: #e96900;
+  --code-background: #262e3d;
+  --color-text-code: #ccc;
   --bg-text-md-code: #3b4252;
   --bg-block-md-quote: #3a4252;
   --color-block-md-quote: #abb9cf;

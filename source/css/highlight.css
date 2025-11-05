@@ -194,8 +194,8 @@ pre .javascript .function {
 }
 
 .markdown-body .highlight {
-  color: #ccc;
-  background-color: #262e3d;
+  color: var(--color-text-code);
+  background-color: var(--code-background);
   border-radius: 5px;
 }
 
@@ -217,7 +217,7 @@ pre .javascript .function {
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #262e3d !important;
+  background-color: var(--code-background) !important;
 }
 
 .markdown-body .highlight table tbody pre {
