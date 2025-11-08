@@ -65,6 +65,12 @@
     <%- css(['/css/figcaption/mac-block.css'])%>
   <% } %>
 
+  <!-- katex -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
+  />
+
   <!-- jquery3.3.1 -->
   <% if (theme.cdns && theme.cdns.jquery && theme.cdns.jquery.enable) { %>
     <script defer type="text/javascript" src="<%- theme.cdns.jquery.url %>"></script>

@@ -819,6 +819,12 @@
 .markdown-body .task-list-item input {
   margin: 0 0.2em 0.25em -1.6em;
   vertical-align: middle;
+  /*-webkit-appearance:none;
+  height: 0.7em;
+  width: 0.7em;
+  border: 1.5px solid grey;
+  border-radius: 2px;
+  background-color: black;*/
 }
 
 .markdown-body hr {
