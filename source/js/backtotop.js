@@ -1,33 +1,26 @@
-// back to top js
-function isHidden() {
-  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-  if (scrollTop > 0) {
-    document.querySelector(".back-to-top").className = "back-to-top";
+// 显示 / 隐藏“回到顶部”按钮
+function toggleBackToTop() {
+  const top = document.documentElement.scrollTop || document.body.scrollTop;
+  const btn = document.querySelector(".back-to-top");
+
+  if (top > 200) {
+    btn.classList.remove("hidden");
   } else {
-    document.querySelector(".back-to-top").className = "back-to-top hidden";
+    btn.classList.add("hidden");
   }
 }
 
-const backToTop = () => {
-  let scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop,
-    delay = 10,
-    time = 200;
-  let step = Math.ceil(scrollTop * delay / time);
-  let timer = setInterval(() => {
-    scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop;
-    if (scrollTop - step <= 0) {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      clearInterval(timer);
-    } else {
-      document.documentElement.scrollTop = scrollTop - step;
-      document.body.scrollTop = scrollTop - step;
-    }
-  }, delay);
+// 平滑滚动：使用浏览器原生 smooth（最完美方案）
+function backToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 
-isHidden()
-document.addEventListener("scroll", isHidden, false);
-document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
+// 初始化事件
+document.addEventListener("scroll", toggleBackToTop);
+toggleBackToTop(); // 页面载入时检查一次
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop);
+
