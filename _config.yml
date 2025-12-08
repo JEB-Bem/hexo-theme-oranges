@@ -104,6 +104,11 @@ navbar:
     path: /tags/
     key: tags
   -
+    name: Presentations
+    enable: true
+    path: /presentations/
+    key: presentations
+  -
     name: Friends
     enable: false
     path: /friends/
