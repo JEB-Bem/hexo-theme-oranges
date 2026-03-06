@@ -260,6 +260,65 @@ a:hover {
   /*font-family: 'Raleway', 'Helvetica Neue', 'Arial', sans-serif;*/
 }
 
+/* About page */
+.about-inline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0 40px 0;
+}
+
+.about-inline a {
+  text-decoration: none;
+  border-bottom: none;
+  display: inline-block;
+}
+
+.about-inline a:hover {
+  border-bottom: none;
+}
+
+.about-inline-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: inline-block;
+  max-width: none;
+  margin: 0;
+  border: 2px solid var(--color-text-base);
+  box-sizing: border-box;
+}
+
+/* ensure avatar keeps its circle and border inside markdown-body overrides */
+.markdown-body .about-inline-avatar {
+  width: 100px;
+  height: 100px;
+  max-width: none;
+  border-radius: 50%;
+  border: 2px solid var(--color-text-base);
+  object-fit: cover;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+}
+
+.about-inline .nickname {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--color-text-a);
+}
+
+.about-inline .nickname a {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.about-inline .nickname a:hover {
+  border-bottom: none;
+}
+
 .navbar {
   margin-left: calc(100vw - 100%);
   display: flex;
