@@ -278,6 +278,12 @@ a:hover {
   border-bottom: none;
 }
 
+.markdown-body .about-inline a,
+.markdown-body .about-inline a:hover {
+  border-bottom: none;
+  text-decoration: none;
+}
+
 .about-inline-avatar {
   width: 100px;
   height: 100px;
