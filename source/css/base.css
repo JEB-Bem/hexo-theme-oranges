@@ -126,8 +126,8 @@ a:hover {
     width: 24px;
     padding: 10px;
     z-index: 999;
-    color: var(--color-text-a);
-    background-color: rgb(255 255 255 / 50%);
+    color: var(--btn-catalog-color);
+    background-color: var(--btn-catalog-bg);
   }
   .btn-catalog i {
     font-size: 24px;
@@ -140,13 +140,17 @@ a:hover {
     display: flex;
     justify-content: flex-end;
     padding: 10px!important;
-    background-color: #fff;
-    box-shadow: -1px 2px 5px 0px #999;
+    background-color: var(--bg-post-catalog);
+    box-shadow: var(--shadow-post-catalog);
     opacity: .9;
     z-index: 9;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     transition: all 0.2s ease;
+  }
+  .dark .post-catalog {
+    background-color: rgba(42, 49, 64, 0.92);
+    box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.35);
   }
   .post-catalog.hidden {
     opacity: 0!important;

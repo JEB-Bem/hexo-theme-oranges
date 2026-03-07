@@ -31,6 +31,10 @@
   --bg-block-md-table: #ffffff;
   --bg-block-md-table-2: #f6f8fa;
   --color-border-md-table: #dfe2e5;
+  --bg-post-catalog: #ffffff;
+  --shadow-post-catalog: -1px 2px 5px 0px rgba(0, 0, 0, 0.25);
+  --btn-catalog-bg: rgba(255, 255, 255, 0.5);
+  --btn-catalog-color: #666666;
 }
 
 /* dark scheme */
@@ -66,4 +70,8 @@
   --bg-block-md-table: #2E3440;
   --bg-block-md-table-2: #313744;
   --color-border-md-table: #4c566a;
+  --bg-post-catalog: rgba(42, 49, 64, 0.92);
+  --shadow-post-catalog: -1px 2px 5px 0px rgba(0, 0, 0, 0.35);
+  --btn-catalog-bg: rgba(42, 49, 64, 0.8);
+  --btn-catalog-color: #e5e7eb;
 }
