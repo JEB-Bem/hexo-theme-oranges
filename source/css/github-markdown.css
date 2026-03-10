@@ -501,9 +501,10 @@
   /*margin: 3rem 0;*/
   padding: 15px;
   color: var(--color-block-md-quote);
-  border-left: 0.25em solid var(--color-block-md-quote);
-  background: var(--bg-block-md-quote);
-  border-radius: 3px;
+  border: 1px solid var(--color-block-md-quote);
+  background: transparent;
+  border-radius: 6px;
+  font-family: "Times New Roman", "KaiTi", "STKaiti", serif;
 }
 
 .markdown-body .note > :first-child,
