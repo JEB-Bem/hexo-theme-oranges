@@ -2,24 +2,35 @@
     font-family: "Times New Roman";
     src: url("/fonts/times.ttf");
     font-style: normal;
+    font-weight: 400;
 }
 
 @font-face {
     font-family: "Times New Roman";
     src: url("/fonts/timesi.ttf");
     font-style: italic;
+    font-weight: 400;
 }
 
 @font-face {
     font-family: "Times New Roman";
     src: url("/fonts/timesbd.ttf");
-    font-style: bold;
+    font-style: normal;
+    font-weight: 700;
 }
 
 @font-face {
     font-family: "Times New Roman";
     src: url("/fonts/timesbi.ttf");
-    font-style: bold italic;
+    font-style: italic;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "KaiTi";
+    src: url("/fonts/simkai.ttf");
+    font-style: normal;
+    font-weight: 400;
 }
 
 @font-face {

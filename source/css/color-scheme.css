@@ -12,8 +12,8 @@
   --code-background: #f8f8f8;
   --color-text-code: #6c6c6c;
   --bg-text-md-code: #f1f4ff;
-  --bg-block-md-quote: rgba(37, 99, 235, 0.1);
-  --color-block-md-quote: #2563eb;
+  --bg-block-md-quote: rgba(63, 112, 181, 0.08);
+  --color-block-md-quote: #3f70b5;
   --color-block-md-warn: #b7791f;
   --color-block-md-caut: #c53030;
   --color-block-md-impo: #9b2c9b;
@@ -51,7 +51,7 @@
   --code-background: #262e3d;
   --color-text-code: #ccc;
   --bg-text-md-code: #2a3140;
-  --bg-block-md-quote: rgba(138, 181, 230, 0.08);
+  --bg-block-md-quote: transparent;
   --color-block-md-quote: #8ab5e6;
   --color-block-md-warn: #e0b35e;
   --color-block-md-caut: #f28585;
