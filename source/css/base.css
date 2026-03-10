@@ -32,24 +32,28 @@
     font-family: "Maple Mono NF CN";
     src: url("/fonts/MapleMono-NF-CN-Regular.ttf");
     font-style: normal;
+    font-weight: 400;
 }
 
 @font-face {
     font-family: "Maple Mono NF CN";
     src: url("/fonts/MapleMono-NF-CN-Bold.ttf");
-    font-style: bold;
-}
-
-@font-face {
-    font-family: "Maple Mono NF CN";
-    src: url("/fonts/MapleMono-NF-CN-BoldItalic.ttf");
-    font-style: bold italic;
+    font-style: normal;
+    font-weight: 700;
 }
 
 @font-face {
     font-family: "Maple Mono NF CN";
     src: url("/fonts/MapleMono-NF-CN-Italic.ttf");
     font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Maple Mono NF CN";
+    src: url("/fonts/MapleMono-NF-CN-BoldItalic.ttf");
+    font-style: italic;
+    font-weight: 700;
 }
 
 * {
