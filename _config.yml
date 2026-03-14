@@ -110,7 +110,7 @@ navbar:
     key: presentations
   -
     name: Friends
-    enable: false
+    enable: true
     path: /friends/
     key: friends
   -
@@ -129,17 +129,28 @@ prevnext:
 
 # 友链详细信息：支持多个友链
 friends:
-  # nickname: 昵称
+  # name: 网站名
+  # avatar: 头像地址
   # site: 地址
-  # meta: 描述
+  # description: 网站简介
+  # nickname/meta 旧字段仍兼容
   -
-    nickname: Zcheng
-    site: https://zcheng.site/
-    meta:
+    name: Wcowin's Blog
+    avatar: https://s1.imagehub.cc/images/2025/12/06/28380affd86b014a6dcaf082fcc97064.png
+    site: https://wcowin.work/
+    description: 循此苦旅，以达星辰
+
+# 长期未活跃的友链
+inactive_friends:
+  # name: 网站名
+  # avatar: 头像地址
+  # site: 地址
+  # description: 网站简介
   -
-    nickname: Hexo
-    site: https://hexo.io/
-    meta:
+    name: Oranges
+    avatar: https://hexo.theme.oranges.zcheng.site/images/avatar.png
+    site: https://hexo.theme.oranges.zcheng.site/
+    description:
 
 # 页脚信息
 footer:

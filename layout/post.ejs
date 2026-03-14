@@ -30,19 +30,63 @@
   <% if (page.type === "friends") { %>
   <!-- 朋友页 url形式：https://yoursite/friends/ -->
   <div class="container friend-index">
-    <div class="friend-list">
-      <% for(let friend of theme.friends) { %>
-        <div class="friend-list-item">
-          <span class="nickname">@ <%- friend.nickname %></span>
-          <a href="<%- friend.site %>" target="_blank">
-            <span class="site-path"><%- friend.site %></span>
+    <div class="friend-section">
+      <div class="friend-list">
+        <% for(let friend of theme.friends) { %>
+          <% 
+            let friendName = friend.name || friend.nickname
+            let friendDesc = friend.description || friend.meta
+            let friendAvatar = friend.avatar
+            let friendInitial = friendName ? friendName.trim().charAt(0).toUpperCase() : "?"
+          %>
+          <a class="friend-card" href="<%- friend.site %>" target="_blank" rel="noopener noreferrer">
+            <div class="friend-card-avatar">
+              <% if (friendAvatar) { %>
+                <img src="<%- friendAvatar %>" alt="<%- friendName %> avatar" loading="lazy">
+              <% } else { %>
+                <span class="friend-card-avatar-fallback"><%- friendInitial %></span>
+              <% } %>
+            </div>
+            <div class="friend-card-body">
+              <div class="friend-card-name"><%- friendName %></div>
+              <% if (friendDesc) { %>
+                <p class="friend-card-desc"><%- friendDesc %></p>
+              <% } %>
+            </div>
           </a>
-          <p class="card-meta">
-            <%- friend.meta %>
-          </p>
-        </div>
-      <% } %>
+        <% } %>
+      </div>
     </div>
+    <% if (theme.inactive_friends && theme.inactive_friends.length > 0) { %>
+      <div class="friend-section friend-section-inactive">
+        <h2 class="friend-section-title"><%= __('inactive_friends') %></h2>
+        <div class="friend-list">
+          <% for(let friend of theme.inactive_friends) { %>
+            <% 
+              let friendName = friend.name || friend.nickname
+              let friendDesc = friend.description || friend.meta
+              let friendAvatar = friend.avatar
+              let friendInitial = friendName ? friendName.trim().charAt(0).toUpperCase() : "?"
+            %>
+            <a class="friend-card" href="<%- friend.site %>" target="_blank" rel="noopener noreferrer">
+              <div class="friend-card-avatar">
+                <% if (friendAvatar) { %>
+                  <img src="<%- friendAvatar %>" alt="<%- friendName %> avatar" loading="lazy">
+                <% } else { %>
+                  <span class="friend-card-avatar-fallback"><%- friendInitial %></span>
+                <% } %>
+              </div>
+              <div class="friend-card-body">
+                <div class="friend-card-name"><%- friendName %></div>
+                <% if (friendDesc) { %>
+                  <p class="friend-card-desc"><%- friendDesc %></p>
+                <% } %>
+              </div>
+            </a>
+          <% } %>
+        </div>
+      </div>
+    <% } %>
     <div class="markdown-body">
       <%- page.content %>
     </div>

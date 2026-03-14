@@ -541,14 +541,114 @@ a:hover {
   padding-left: 30px;
 }
 
-.friend-list-item {
-  font-size: 1.6rem;
-  padding: 10px;
+.friend-index .friend-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
 }
 
-.friend-list-item .nickname {
-  padding-right: 10px;
-  color: var(--color-text-a)
+.friend-section + .friend-section {
+  margin-top: 34px;
+}
+
+.friend-section-title {
+  margin-bottom: 14px;
+  color: var(--color-text-base);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.friend-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--color-divider-md-border);
+  border-radius: 16px;
+  background-color: transparent;
+  transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.friend-card:hover {
+  border-color: var(--color-text-base);
+  background-color: rgba(127, 127, 127, 0.04);
+  transform: translateY(-2px);
+}
+
+.friend-card-avatar {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.friend-card-avatar img,
+.friend-card-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.friend-card-avatar img {
+  display: block;
+  object-fit: cover;
+}
+
+.friend-card-avatar-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-text-md-code);
+  color: var(--color-text-a-hover);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.friend-card-body {
+  min-width: 0;
+}
+
+.friend-card-name {
+  color: var(--color-text-a-hover);
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.friend-card-desc {
+  margin-top: 4px;
+  color: var(--color-text-base);
+  font-size: 1.35rem;
+  line-height: 1.65;
+}
+
+.friend-section-inactive .friend-card {
+  border-color: rgba(127, 127, 127, 0.24);
+}
+
+.friend-section-inactive .friend-card:hover {
+  border-color: rgba(127, 127, 127, 0.4);
+  background-color: rgba(127, 127, 127, 0.03);
+}
+
+.friend-section-inactive .friend-card-avatar img,
+.friend-section-inactive .friend-card-avatar-fallback {
+  filter: grayscale(1);
+}
+
+.friend-section-inactive .friend-card-avatar-fallback {
+  color: var(--color-text-base);
+}
+
+.friend-section-inactive .friend-card-name,
+.friend-section-inactive .friend-card-desc {
+  color: var(--color-text-sub);
+}
+
+@media (max-width: 888px) {
+  .friend-index .friend-list {
+    gap: 14px;
+  }
 }
 
 .post-details .post-title {
@@ -613,11 +713,8 @@ a:hover {
 .github-edit .github-edit-link{
   display: flex;
   align-items: center;
-  justify-content: center;
   font-size: 1.5rem;
   cursor: pointer;
-  width: fit-content;
-  margin: 0 auto;
 }
 
 /*
