@@ -139,6 +139,11 @@ friends:
     avatar: https://s1.imagehub.cc/images/2025/12/06/28380affd86b014a6dcaf082fcc97064.png
     site: https://wcowin.work/
     description: 循此苦旅，以达星辰
+  -
+    name: 廖雪峰的网站
+    avatar: https://liaoxuefeng.com/static/logo.svg
+    site: https://liaoxuefeng.com/index.html
+    description: 资深软件开发工程师，业余马拉松选手。
 
 # 长期未活跃的友链
 inactive_friends:
