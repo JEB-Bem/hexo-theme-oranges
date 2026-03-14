@@ -171,21 +171,26 @@
           </div>
         </div>
       <% } %>
-      <script src="https://giscus.app/client.js"
-        data-repo="JEB-Bem/JBlog"
-        data-repo-id="R_kgDOQMmpRw"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOQMmpR84Cxks2"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="noborder_gray"
-        data-lang="zh-CN"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
+      <script>
+        (function() {
+          var giscusScript = document.createElement('script')
+          giscusScript.src = 'https://giscus.app/client.js'
+          giscusScript.setAttribute('data-repo', 'JEB-Bem/JBlog')
+          giscusScript.setAttribute('data-repo-id', 'R_kgDOQMmpRw')
+          giscusScript.setAttribute('data-category', 'Announcements')
+          giscusScript.setAttribute('data-category-id', 'DIC_kwDOQMmpR84Cxks2')
+          giscusScript.setAttribute('data-mapping', 'pathname')
+          giscusScript.setAttribute('data-strict', '0')
+          giscusScript.setAttribute('data-reactions-enabled', '1')
+          giscusScript.setAttribute('data-emit-metadata', '0')
+          giscusScript.setAttribute('data-input-position', 'bottom')
+          giscusScript.setAttribute('data-theme', window.__giscusTheme || 'light')
+          giscusScript.setAttribute('data-lang', 'zh-CN')
+          giscusScript.setAttribute('data-loading', 'lazy')
+          giscusScript.setAttribute('crossorigin', 'anonymous')
+          giscusScript.async = true
+          document.currentScript.parentNode.insertBefore(giscusScript, document.currentScript)
+        })()
       </script>
     </div>
     <%- partial("_partial/catalog") %>

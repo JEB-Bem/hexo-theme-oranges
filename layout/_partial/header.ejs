@@ -109,10 +109,18 @@
   <% } %>
 
   <script>
-    var html = document.documentElement
-    const colorMode = localStorage.getItem('color-mode')
-    if (colorMode) {
-      document.documentElement.setAttribute('color-mode', colorMode)
-    }
+    (function() {
+      var html = document.documentElement
+      var storedMode = localStorage.getItem('color-mode')
+      var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+      var resolvedMode = storedMode && storedMode !== 'auto'
+        ? storedMode
+        : (mediaQuery.matches ? 'dark' : 'light')
+
+      html.setAttribute('color-mode', resolvedMode)
+      window.__themePreference = storedMode || 'auto'
+      window.__colorMode = resolvedMode
+      window.__giscusTheme = resolvedMode === 'dark' ? 'noborder_gray' : 'light'
+    })()
   </script>
 </head>
