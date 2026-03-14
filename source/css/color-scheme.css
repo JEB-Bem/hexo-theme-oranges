@@ -31,6 +31,10 @@
   --bg-block-md-table: #ffffff;
   --bg-block-md-table-2: #f6f8fa;
   --color-border-md-table: #dfe2e5;
+  --color-text-md-table-head: #1f2937;
+  --color-text-md-table-muted: #6b7280;
+  --color-text-md-table-code: #2f4b7c;
+  --color-border-md-table-strong: rgba(31, 41, 55, 0.16);
   --bg-post-catalog: #ffffff;
   --shadow-post-catalog: -1px 2px 5px 0px rgba(0, 0, 0, 0.25);
   --btn-catalog-bg: rgba(255, 255, 255, 0.5);
@@ -70,6 +74,10 @@
   --bg-block-md-table: #2E3440;
   --bg-block-md-table-2: #313744;
   --color-border-md-table: #4c566a;
+  --color-text-md-table-head: #f1f5f9;
+  --color-text-md-table-muted: #c1cbd8;
+  --color-text-md-table-code: #b7d4ff;
+  --color-border-md-table-strong: rgba(241, 245, 249, 0.22);
   --bg-post-catalog: rgba(42, 49, 64, 0.92);
   --shadow-post-catalog: -1px 2px 5px 0px rgba(0, 0, 0, 0.35);
   --btn-catalog-bg: rgba(42, 49, 64, 0.8);

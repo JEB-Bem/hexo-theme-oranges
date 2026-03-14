@@ -1,15 +1,22 @@
 // catalog js
 let catalog = document.getElementById("catalog");
-let catalogTopHeight = catalog.offsetTop;
 let tocElement = document.getElementsByClassName("catalog-content")[0]
+let postContent = document.querySelector("#post-details .post-content");
+
+function getCatalogTopHeight() {
+  if (!postContent) return catalog.offsetTop
+  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+  return postContent.getBoundingClientRect().top + scrollTop
+}
 
 // 是否固定目录
 function changePos() {
+  let catalogTopHeight = getCatalogTopHeight()
   let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
   if (scrollTop > catalogTopHeight - 20) {
     catalog.style = "position: fixed; top: 20px; bottom: 20px;"
   } else {
-    catalog.style = "position: absolute; top: calc(290px + 88px + 30px)"
+    catalog.style = `position: absolute; top: ${catalogTopHeight}px`
   }
 }
 

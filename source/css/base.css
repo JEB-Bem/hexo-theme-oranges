@@ -572,6 +572,37 @@ a:hover {
 
 .post-content {
   padding-bottom: 1rem;
+  min-width: 0;
+}
+
+.post-details.container {
+  width: min(1280px, calc(100% - 72px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 232px;
+  column-gap: 28px;
+  align-items: start;
+}
+
+.post-details .post-content,
+.post-details .comments-container {
+  grid-column: 1;
+}
+
+.post-details .comments-container {
+  width: min(100%, 920px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-details .post-content > .markdown-body,
+.post-details .post-content > .post-title,
+.post-details .post-content > .post-attach,
+.post-details .post-content > .github-edit,
+.post-details .post-content > .prev-or-next {
+  width: min(100%, 920px);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .github-edit {
@@ -582,8 +613,11 @@ a:hover {
 .github-edit .github-edit-link{
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 1.5rem;
   cursor: pointer;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 /*
@@ -630,6 +664,33 @@ a:hover {
   }
   .tag-details .time-m-d, .archives .time-m-d {
     margin: 0 15px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .post-details.container {
+    width: min(1120px, calc(100% - 48px));
+    grid-template-columns: minmax(0, 1fr) 212px;
+    column-gap: 22px;
+  }
+
+  .post-details .post-content > .markdown-body,
+  .post-details .post-content > .post-title,
+  .post-details .post-content > .post-attach,
+  .post-details .post-content > .github-edit,
+  .post-details .post-content > .prev-or-next {
+    width: min(100%, 860px);
+  }
+
+  .post-details .comments-container {
+    width: min(100%, 860px);
+  }
+}
+
+@media (max-width: 888px) {
+  .post-details.container {
+    width: 90%;
+    display: block;
   }
 }
 
