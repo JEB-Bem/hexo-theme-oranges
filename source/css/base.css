@@ -1,68 +1,88 @@
 @font-face {
     font-family: "Times New Roman";
-    src: url("/fonts/times.ttf");
+    src: url("/fonts/times.woff2") format("woff2"),
+         url("/fonts/times.ttf") format("truetype");
+    font-display: swap;
     font-style: normal;
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Times New Roman";
-    src: url("/fonts/timesi.ttf");
+    src: url("/fonts/timesi.woff2") format("woff2"),
+         url("/fonts/timesi.ttf") format("truetype");
+    font-display: swap;
     font-style: italic;
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Times New Roman";
-    src: url("/fonts/timesbd.ttf");
+    src: url("/fonts/timesbd.woff2") format("woff2"),
+         url("/fonts/timesbd.ttf") format("truetype");
+    font-display: swap;
     font-style: normal;
     font-weight: 700;
 }
 
 @font-face {
     font-family: "Times New Roman";
-    src: url("/fonts/timesbi.ttf");
+    src: url("/fonts/timesbi.woff2") format("woff2"),
+         url("/fonts/timesbi.ttf") format("truetype");
+    font-display: swap;
     font-style: italic;
     font-weight: 700;
 }
 
 @font-face {
     font-family: "KaiTi";
-    src: url("/fonts/simkai.ttf");
+    src: url("/fonts/simkai.woff2") format("woff2"),
+         url("/fonts/simkai.ttf") format("truetype");
+    font-display: swap;
     font-style: normal;
     font-weight: 400;
 }
 
 @font-face {
     font-family: "KaiTi";
-    src: url("/fonts/simkai.ttf");
+    src: url("/fonts/simkai.woff2") format("woff2"),
+         url("/fonts/simkai.ttf") format("truetype");
+    font-display: swap;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Maple Mono NF CN";
-    src: url("/fonts/MapleMono-NF-CN-Regular.ttf");
+    src: url("/fonts/MapleMono-NF-CN-Regular.woff2") format("woff2"),
+         url("/fonts/MapleMono-NF-CN-Regular.ttf") format("truetype");
+    font-display: swap;
     font-style: normal;
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Maple Mono NF CN";
-    src: url("/fonts/MapleMono-NF-CN-Bold.ttf");
+    src: url("/fonts/MapleMono-NF-CN-Bold.woff2") format("woff2"),
+         url("/fonts/MapleMono-NF-CN-Bold.ttf") format("truetype");
+    font-display: swap;
     font-style: normal;
     font-weight: 700;
 }
 
 @font-face {
     font-family: "Maple Mono NF CN";
-    src: url("/fonts/MapleMono-NF-CN-Italic.ttf");
+    src: url("/fonts/MapleMono-NF-CN-Italic.woff2") format("woff2"),
+         url("/fonts/MapleMono-NF-CN-Italic.ttf") format("truetype");
+    font-display: swap;
     font-style: italic;
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Maple Mono NF CN";
-    src: url("/fonts/MapleMono-NF-CN-BoldItalic.ttf");
+    src: url("/fonts/MapleMono-NF-CN-BoldItalic.woff2") format("woff2"),
+         url("/fonts/MapleMono-NF-CN-BoldItalic.ttf") format("truetype");
+    font-display: swap;
     font-style: italic;
     font-weight: 700;
 }
