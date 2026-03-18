@@ -129,7 +129,7 @@
   <!-- 工具页 url形式：https://yoursite/tools/ -->
     <div class="container tools-index">
       <div class="tools-content">
-        <%- page.content %>
+        <%- partial('_partial/tools-page', { toolsPage: site.data.tools || {} }) %>
       </div>
     </div>
   <% } %>
