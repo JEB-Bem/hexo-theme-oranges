@@ -8,6 +8,24 @@
 
 $theme-color = convert(hexo-config('themeColor'))
 
+:root[color-mode="light"]
+  --theme-accent $theme-color
+  --theme-accent-soft rgba($theme-color, 0.12)
+  --theme-accent-softer rgba($theme-color, 0.06)
+  --theme-accent-border rgba($theme-color, 0.22)
+  --theme-accent-strong rgba($theme-color, 0.42)
+  --theme-accent-shadow rgba($theme-color, 0.14)
+  --theme-accent-text mix(#3f70b5, $theme-color, 55%)
+
+:root[color-mode="dark"]
+  --theme-accent $theme-color
+  --theme-accent-soft rgba($theme-color, 0.18)
+  --theme-accent-softer rgba($theme-color, 0.1)
+  --theme-accent-border rgba($theme-color, 0.28)
+  --theme-accent-strong rgba($theme-color, 0.5)
+  --theme-accent-shadow rgba($theme-color, 0.22)
+  --theme-accent-text mix(#cfe6ff, $theme-color, 38%)
+
 .markdown-body {
   code {
     color: var(--color-text-md-code);
