@@ -9,6 +9,15 @@
   <%- partial('_partial/clipboard') %>
 <% } %>
 
+<%
+  var pageTypeTitles = {
+    about: __('about'),
+    friends: __('friend'),
+    presentations: __('presentations'),
+    tools: __('tools')
+  }
+%>
+
 <% if (page.type === "tags") { %>
   <!-- 标签页 url形式：https://yoursite/tags/ -->
   <div class="container tag-index">
@@ -96,6 +105,34 @@
   <% if(page.type === "about") { %>
   <!-- 关于页 url形式：https://yoursite/about/ -->
     <div class="container about-index">
+      <div class="markdown-body">
+        <%- page.content %>
+      </div>
+    </div>
+  <% } %>
+
+  <% if(page.type === "presentations") { %>
+  <!-- 演示页 url形式：https://yoursite/presentations/ -->
+    <div class="container presentations-index">
+      <div class="content-title">
+        <h2>
+          <span><%- pageTypeTitles.presentations %></span>
+        </h2>
+      </div>
+      <div class="markdown-body">
+        <%- page.content %>
+      </div>
+    </div>
+  <% } %>
+
+  <% if(page.type === "tools") { %>
+  <!-- 工具页 url形式：https://yoursite/tools/ -->
+    <div class="container tools-index">
+      <div class="content-title">
+        <h2>
+          <span><%- pageTypeTitles.tools %></span>
+        </h2>
+      </div>
       <div class="markdown-body">
         <%- page.content %>
       </div>
@@ -215,32 +252,11 @@
           </div>
         </div>
       <% } %>
-      <script>
-        (function() {
-          var giscusScript = document.createElement('script')
-          giscusScript.src = 'https://giscus.app/client.js'
-          giscusScript.setAttribute('data-repo', 'JEB-Bem/JBlog')
-          giscusScript.setAttribute('data-repo-id', 'R_kgDOQMmpRw')
-          giscusScript.setAttribute('data-category', 'Announcements')
-          giscusScript.setAttribute('data-category-id', 'DIC_kwDOQMmpR84Cxks2')
-          giscusScript.setAttribute('data-mapping', 'pathname')
-          giscusScript.setAttribute('data-strict', '0')
-          giscusScript.setAttribute('data-reactions-enabled', '1')
-          giscusScript.setAttribute('data-emit-metadata', '0')
-          giscusScript.setAttribute('data-input-position', 'bottom')
-          giscusScript.setAttribute('data-theme', window.__giscusTheme || 'light')
-          giscusScript.setAttribute('data-lang', 'zh-CN')
-          giscusScript.setAttribute('data-loading', 'lazy')
-          giscusScript.setAttribute('crossorigin', 'anonymous')
-          giscusScript.async = true
-          document.currentScript.parentNode.insertBefore(giscusScript, document.currentScript)
-        })()
-      </script>
     </div>
     <%- partial("_partial/catalog") %>
-    <% if(theme.comments.enable) { %>
+    <% if(theme.giscus && theme.giscus.enable) { %>
       <div class="comments-container">
-        <%- partial("_partial/comments") %>
+        <%- partial("_partial/giscus") %>
       </div>
     <% } %>
   </div>

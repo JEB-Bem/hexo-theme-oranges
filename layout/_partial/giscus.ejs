@@ -1,0 +1,22 @@
+<div class="giscus"></div>
+<script>
+  (function() {
+    var giscusScript = document.createElement('script')
+    giscusScript.src = 'https://giscus.app/client.js'
+    giscusScript.setAttribute('data-repo', '<%- theme.giscus.repo %>')
+    giscusScript.setAttribute('data-repo-id', '<%- theme.giscus.repo_id %>')
+    giscusScript.setAttribute('data-category', '<%- theme.giscus.category %>')
+    giscusScript.setAttribute('data-category-id', '<%- theme.giscus.category_id %>')
+    giscusScript.setAttribute('data-mapping', '<%- theme.giscus.mapping %>')
+    giscusScript.setAttribute('data-strict', '<%- theme.giscus.strict %>')
+    giscusScript.setAttribute('data-reactions-enabled', '<%- theme.giscus.reactions_enabled %>')
+    giscusScript.setAttribute('data-emit-metadata', '<%- theme.giscus.emit_metadata %>')
+    giscusScript.setAttribute('data-input-position', '<%- theme.giscus.input_position %>')
+    giscusScript.setAttribute('data-theme', window.__giscusTheme || 'light')
+    giscusScript.setAttribute('data-lang', '<%- theme.giscus.lang %>')
+    giscusScript.setAttribute('data-loading', '<%- theme.giscus.loading %>')
+    giscusScript.setAttribute('crossorigin', 'anonymous')
+    giscusScript.async = true
+    document.currentScript.parentNode.insertBefore(giscusScript, document.currentScript)
+  })()
+</script>

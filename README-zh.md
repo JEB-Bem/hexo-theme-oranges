@@ -24,9 +24,39 @@ git submodule add https://github.com/zchengsite/hexo-theme-oranges.git themes/or
 theme: oranges
 ```
 
-复制主题文件夹下的`_config.yml`文件到博客根目录并改名为`_config.oranges.yml`，后续修改主题操作均在`_config.oranges.yml`中进行。
+主题配置可以放在以下任一位置：
+
+- `themes/oranges/_config.yml`
+- 博客根目录下的 `_config.oranges.yml`
+
+如果两处同时存在，建议只保留一处作为唯一配置源。
 
 ## 配置
+
+### 支持的独立页面类型
+
+当前主题原生支持以下非文章页面：
+
+- `tags`
+- `categories`
+- `friends`
+- `about`
+- `presentations`
+- `tools`
+
+如果只是普通独立页面，不需要专用模板，请不要设置 `type`。
+
+### 语言文件
+
+当前主题内置以下语言文件：
+
+- `default.yml`
+- `zh-CN.yml`
+- `zh-TW.yml`
+- `zh-cn.yml`
+- `zh-tw.yml`
+
+因此站点配置中使用 `language: zh-cn` 或 `language: zh-tw` 也可以直接命中对应语言包。
 
 <details>
   <summary><b>Tags page</b> (click to show)</summary>
@@ -74,7 +104,7 @@ hexo new page friends
 
 ```markdown
 ---
-title: tags
+title: friends
 date: 2019-05-03 12:03:35
 type: "friends"
 categories:
@@ -107,7 +137,7 @@ hexo new page about
 
 ```markdown
 ---
-title: tags
+title: about
 date: 2019-05-03 12:03:35
 type: "about"
 categories:
@@ -140,7 +170,7 @@ hexo new page categories
 
 ```markdown
 ---
-title: tags
+title: categories
 date: 2019-05-03 12:03:35
 type: "categories"
 categories:
@@ -157,6 +187,88 @@ navbar:
     enable: true
     path: /categories/
 ```
+
+</details>
+
+<details>
+  <summary><b>Presentations page</b> (click to show)</summary>
+
+在 hexo 博客项目根目录下执行，在`source`文件夹下生成`presentations`文件夹
+
+```bash
+hexo new page presentations
+```
+
+接着修改`presentations`文件夹下`index`为以下内容
+
+```markdown
+---
+title: presentations
+date: 2026-03-18 12:00:00
+type: "presentations"
+---
+```
+
+并在配置文件中增加导航项：
+
+```yml
+navbar:
+  -
+    name: Presentations
+    enable: true
+    path: /presentations/
+```
+
+</details>
+
+<details>
+  <summary><b>Tools page</b> (click to show)</summary>
+
+在 hexo 博客项目根目录下执行，在`source`文件夹下生成`tools`文件夹
+
+```bash
+hexo new page tools
+```
+
+接着修改`tools`文件夹下`index`为以下内容
+
+```markdown
+---
+title: tools
+date: 2026-03-18 12:00:00
+type: "tools"
+---
+```
+
+并在配置文件中增加导航项：
+
+```yml
+navbar:
+  -
+    name: Tools
+    enable: true
+    path: /tools/
+```
+
+</details>
+
+<details>
+  <summary><b>普通自定义页面</b> (click to show)</summary>
+
+如果你只是想新增一个普通页面，而不是使用主题内置的专用模板，不要设置 `type`：
+
+```bash
+hexo new page links
+```
+
+```markdown
+---
+title: links
+date: 2026-03-18 12:00:00
+---
+```
+
+这样页面会走默认页面容器，不会误命中其他专用分支。
 
 </details>
 
@@ -213,33 +325,29 @@ footer:
 </details>
 
 <details>
-  <summary><b>评论系统 (Comment)</b> (click to show)</summary>
+  <summary><b>Giscus 评论系统</b> (click to show)</summary>
 
-1.确保配置文件`_config.oranges.yml`下`comments`->`enable: true`
+当前主题仅内置 Giscus 评论系统。
 
-2.目前支持以下几种评论插件
-
-- [valine](https://valine.js.org/quickstart.html)
-- [gitalk](https://github.com/gitalk/gitalk#usage)
-- [disqus](https://disqus.com)(需科学上网)
-
-3.如需使用，修改相应评论下`enable: true`
-
-4.查看评论插件官方教程获取相应的字段填入即可使用
-
-以`valine`为例，注册`valine`并获取`appId`&`appKey`填入即可使用
+在 `themes/oranges/_config.yml` 或 `_config.oranges.yml` 中配置：
 
 ```yml
-comments:
+giscus:
   enable: true
-  valine:
-    # https://valine.js.org/quickstart.html#%E8%8E%B7%E5%8F%96APP-ID-%E5%92%8C-APP-Key
-    enable: true
-    appId: xxxxxxxx
-    appKey: xxxxxxxxx
-    placeholder: welcome!
-    avatar: retro
+  repo: your-org/your-repo
+  repo_id: R_xxxxxxxxx
+  category: Announcements
+  category_id: DIC_xxxxxxxxx
+  mapping: pathname
+  strict: 0
+  reactions_enabled: 1
+  emit_metadata: 0
+  input_position: bottom
+  lang: zh-CN
+  loading: lazy
 ```
+
+主题会自动根据浅色/深色模式同步 Giscus 主题。
 
 </details>
 
@@ -269,6 +377,13 @@ prevnext:
 ```
 
 </details>
+
+## Breaking Changes
+
+- `comments` 配置项已移除，统一改为 `giscus`。
+- Valine、Waline、Gitalk、Disqus 的内置支持文件已从主题中删除。
+- `presentations` 与 `tools` 现在是独立页面类型，不再复用其他页面模板。
+- 归档页标题改为通过 `archive_a` / `archive_b` 翻译键生成。
 
 <details>
   <summary><b>文章图片懒加载 (Lazy image loading)</b> (click to show)</summary>

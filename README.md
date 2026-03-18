@@ -16,15 +16,47 @@ To update the theme in the future, just execute the `git pull` command in the th
 
 ## Usage
 
-In order to update the theme more conveniently, it is recommended to install it by adding a Git submodule.Edit the `theme` field in the `_config.yml` file under the project root:
+Edit the `theme` field in the root `_config.yml`:
 
 ```yml
 theme: oranges
 ```
 
-Copy the `_config.yml` file in the theme folder to the blog root directory and rename it to `_config.oranges.yml`. Subsequent theme modification operations are performed in `_config.oranges.yml`.
+Theme options can be configured in either of these places:
 
-## configuration
+- `themes/oranges/_config.yml`
+- `_config.oranges.yml` in the site root
+
+If both exist, keep them in sync and prefer one source of truth.
+
+## What This Theme Supports
+
+This theme currently has first-class support for these non-post page types:
+
+- `tags`
+- `categories`
+- `friends`
+- `about`
+- `presentations`
+- `tools`
+
+For a plain custom page that does not need a dedicated layout, omit `type` and let it render through the default post/page container.
+
+## Configuration
+
+### Language
+
+The theme ships with these built-in language files:
+
+- `default.yml`
+- `zh-CN.yml`
+- `zh-TW.yml`
+- `zh-cn.yml`
+- `zh-tw.yml`
+
+If your site uses `language: zh-cn` or `language: zh-tw`, the lowercase aliases are supported directly.
+
+### Pages
 
 <details>
   <summary><b>tags page</b> (click to show)</summary>
@@ -44,8 +76,6 @@ Copy the `_config.yml` file in the theme folder to the blog root directory and r
   type: "tags"
   ---
   ```
-
-  Enable `tags` in the `_config.oranges.yml` file:
 
   ```yml
   navbar:
@@ -76,8 +106,6 @@ Copy the `_config.yml` file in the theme folder to the blog root directory and r
   ---
   ```
 
-  Enable `categories` in the `_config.oranges.yml` file:
-
   ```yml
   navbar:
     -
@@ -106,8 +134,6 @@ Copy the `_config.yml` file in the theme folder to the blog root directory and r
   type: "friends"
   ---
   ```
-
-  Enable `friends` in the `_config.oranges.yml` file:
 
   ```yml
   navbar:
@@ -138,8 +164,6 @@ Copy the `_config.yml` file in the theme folder to the blog root directory and r
   ---
   ```
 
-  Enable `about` in the `_config.oranges.yml` file:
-
   ```yml
   navbar:
     -
@@ -151,7 +175,85 @@ Copy the `_config.yml` file in the theme folder to the blog root directory and r
 </details>
 
 <details>
-  <summary><b>catalog(contents)</b> (click to show)</summary>
+  <summary><b>presentations page</b> (click to show)</summary>
+
+  To add `presentations page`:
+
+  ```bash
+  hexo new page presentations
+  ```
+
+  Edit `source/presentations/index.md`:
+
+  ```markdown
+  ---
+  title: presentations
+  date: 2026-03-18 12:00:00
+  type: "presentations"
+  ---
+  ```
+
+  ```yml
+  navbar:
+    -
+      name: Presentations
+      enable: true
+      path: /presentations/
+  ```
+
+</details>
+
+<details>
+  <summary><b>tools page</b> (click to show)</summary>
+
+  To add `tools page`:
+
+  ```bash
+  hexo new page tools
+  ```
+
+  Edit `source/tools/index.md`:
+
+  ```markdown
+  ---
+  title: tools
+  date: 2026-03-18 12:00:00
+  type: "tools"
+  ---
+  ```
+
+  ```yml
+  navbar:
+    -
+      name: Tools
+      enable: true
+      path: /tools/
+  ```
+
+</details>
+
+<details>
+  <summary><b>plain custom page</b> (click to show)</summary>
+
+  If you just need a normal standalone page, do not set `type`:
+
+  ```bash
+  hexo new page links
+  ```
+
+  ```markdown
+  ---
+  title: links
+  date: 2026-03-18 12:00:00
+  ---
+  ```
+
+  This keeps the page on the default page/post layout instead of a dedicated type-specific layout.
+
+</details>
+
+<details>
+  <summary><b>catalog (contents)</b> (click to show)</summary>
 
   Enable `catalog` in the `_config.oranges.yml` file:
 
@@ -202,33 +304,29 @@ Copy the `_config.yml` file in the theme folder to the blog root directory and r
 </details>
 
 <details>
-  <summary><b>Comments</b> (click to show)</summary>
+  <summary><b>Giscus</b> (click to show)</summary>
 
-  supported:
+  This theme now supports Giscus as the only built-in comment system.
 
-- [valine](https://valine.js.org/quickstart.html)
-- [gitalk](https://github.com/gitalk/gitalk#usage)
-- [disqus](https://disqus.com)
-
-  First, Enable `Comments` in the `_config.oranges.yml` file:
+  Configure it in `themes/oranges/_config.yml` or `_config.oranges.yml`:
 
   ```yml
-  comments:
+  giscus:
     enable: true
+    repo: your-org/your-repo
+    repo_id: R_xxxxxxxxx
+    category: Announcements
+    category_id: DIC_xxxxxxxxx
+    mapping: pathname
+    strict: 0
+    reactions_enabled: 1
+    emit_metadata: 0
+    input_position: bottom
+    lang: en
+    loading: lazy
   ```
 
-  Then, select a comment system to use, take [valine](https://valine.js.org/quickstart.html) for example:
-
-  View the official tutorial to get the `appId` & `appKey`:
-
-  ```yml
-  valine:
-    enable: true
-    appId: j73OlR7xxxxxPDrO-gzGzoHsz
-    appKey: mhyUfuxxxxk41wc25
-    placeholder: welcome!
-    avatar: retro
-  ```
+  The theme automatically synchronizes the Giscus theme with the light/dark color mode switch.
 
 </details>
 
@@ -258,6 +356,13 @@ Copy the `_config.yml` file in the theme folder to the blog root directory and r
   ```
 
 </details>
+
+## Breaking Changes
+
+- `comments` configuration has been removed. Use `giscus` instead.
+- Valine, Waline, Gitalk, and Disqus integration files were removed from the theme.
+- `presentations` and `tools` are now dedicated page types instead of ad-hoc reuse of other layouts.
+- Archive titles now use translated `archive_a` / `archive_b` strings instead of concatenating untranslated keys.
 
 <details>
   <summary><b>lazy image loading</b> (click to show)</summary>
