@@ -1089,9 +1089,9 @@ a:hover {
 
 .post-details .post-title {
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 3rem;
   font-weight: 600;
-  color: var(--color-text-a);
+  color: #ffffff;
   padding-bottom: 10px;
 }
 

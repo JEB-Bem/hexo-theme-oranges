@@ -127,7 +127,23 @@ friends:
     name: 廖雪峰的网站
     avatar: https://liaoxuefeng.com/static/logo.svg
     site: https://liaoxuefeng.com/index.html
-    description: 资深软件开发工程师，业余马拉松选手。
+    description: 资深软件开发工程师，业余马拉松选手
+  -
+    name: Julia Evans
+    avatar: https://avatars.githubusercontent.com/u/817739?v=4
+    site: https://jvns.ca/
+    description: Being delighted about programming
+  -
+    name: ejmastnak
+    avatar: https://ejmastnak.com/elijan.jpg
+    site: ejmastnak.com
+    description: Good at LaTeX.
+  -
+    name: Dan Luu
+    avatar: https://files.mastodon.social/accounts/avatars/000/253/738/original/825f49f8c3203a87.png
+    site: https://danluu.com/
+    description: Creating programming blog posts
+
 
 # 长期未活跃的友链
 inactive_friends:
