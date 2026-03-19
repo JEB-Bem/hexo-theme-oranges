@@ -3,7 +3,7 @@
 
   <%- partial('_partial/header') %>
 
-  <body>
+  <body class="<%= is_home() ? 'page-home' : 'page-inner' %>">
     <div id="app">
       <%- partial('_partial/navigation') %>
 

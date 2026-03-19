@@ -171,6 +171,19 @@ a:hover {
   padding: 50px 0;
 }
 
+.header-inner {
+  padding: 0;
+}
+
+.page-inner {
+  --inner-navbar-height: 64px;
+}
+
+.page-inner .flex-container {
+  min-height: calc(100vh - var(--inner-navbar-height));
+  padding-top: calc(var(--inner-navbar-height) + 30px);
+}
+
 .container {
   width: 50%;
   margin: 0 auto;
@@ -662,54 +675,196 @@ a:hover {
   justify-content: center;
 }
 
+.navbar-nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.navbar-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  margin-left: 0;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: var(--inner-navbar-height);
+  padding: 0 32px;
+  background: color-mix(in srgb, var(--bg-body) 88%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--theme-accent-border);
+  transition: transform 0.28s ease, opacity 0.28s ease, background-color 0.28s ease;
+}
+
+.navbar-top.is-hidden {
+  transform: translateY(calc(-100% - 8px));
+  opacity: 0;
+}
+
+.navbar-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-base);
+  flex-shrink: 0;
+  line-height: 0;
+  min-height: 24px;
+}
+
+.navbar-mobile-spacer,
+.navbar-toggle {
+  display: none;
+}
+
+.navbar-mark svg {
+  display: block;
+  width: 95px;
+  height: 24px;
+  max-height: none;
+  overflow: visible;
+}
+
 .navbar ul li {
   position: relative;
   display: inline-block;
   margin: 0 15px;
   font-size: 1.65rem;
-  font-weight: bold;
+  font-weight: 400;
+  font-family: Arial, sans-serif;
   text-align: center;
 }
 
 .navbar ul li a {
-  padding-bottom: 2px;
+  display: inline-block;
+  padding: 2px 5px;
 }
 
-.navbar ul li a:hover::after {
-  content: "";
-  position: absolute;
-  bottom: 3px;
-  left: 5px;
-  height: 6px;
-  opacity: 0.45;
-  background-color: gray;
-  width: 89%;
+.navbar ul li a:hover {
+  color: var(--color-text-a-hover);
 }
 
 .navbar ul li.active a {
   color: var(--color-text-a-active);
 }
 
-.navbar ul li.active a::after {
-  content: "";
-  position: absolute;
-  bottom: 3px;
-  left: 5px;
-  height: 6px;
-  opacity: 0.55;
-  background-color: gray;
-  width: 89%;
-}
-
 @media (max-width: 888px) {
-  .navbar ul li {
-    margin: 0 10px;
+  .page-inner {
+    --inner-navbar-height: 60px;
+  }
+
+  .navbar-top {
+    padding: 0 18px;
+    gap: 14px;
+  }
+
+  .navbar-mobile-spacer,
+  .navbar-toggle {
+    width: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+  }
+
+  .navbar-toggle {
+    position: relative;
+    z-index: 2;
+    flex-direction: column;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--color-text-base);
+    cursor: pointer;
+  }
+
+  .navbar-toggle span {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    margin: 2.5px 0;
+    border-radius: 999px;
+    background: currentColor;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .navbar-mark svg {
+    width: 88px;
+    height: 22px;
+  }
+
+  .navbar-top .navbar-mark {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .navbar-top .navbar-nav {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 18px;
+    min-width: 148px;
+    padding: 10px 12px;
+    border: 1px solid var(--theme-accent-border);
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--bg-body) 96%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .navbar-top.is-menu-open .navbar-nav {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .navbar-top .navbar-nav ul {
+    display: block;
+  }
+
+  .navbar-top .navbar-nav ul li {
+    display: block;
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: right;
+  }
+
+  .navbar-top .navbar-nav ul li + li {
+    margin-top: 10px;
+  }
+
+  .navbar-top .navbar-nav ul li a {
+    display: inline-block;
+    padding-bottom: 0;
   }
 }
 
 @media (max-width: 390px) {
-  .navbar ul li {
-    margin: 0 3px;
+  .page-inner {
+    --inner-navbar-height: 60px;
+  }
+
+  .navbar-top {
+    padding: 10px 16px;
+    gap: 12px;
+  }
+
+  .navbar-top .navbar-nav {
+    right: 16px;
+  }
+
+  .navbar-mark svg {
+    width: 84px;
+    height: 20px;
   }
 }
 
