@@ -87,6 +87,18 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
   />
+  <style>
+    .markdown-body .katex-display {
+      text-align: left !important;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+    .markdown-body .katex-display > .katex {
+      display: block;
+      text-align: left !important;
+      white-space: nowrap;
+    }
+  </style>
 
   <!-- jquery3.3.1 -->
   <% if (theme.cdns && theme.cdns.jquery && theme.cdns.jquery.enable) { %>
