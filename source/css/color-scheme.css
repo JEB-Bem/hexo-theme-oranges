@@ -57,11 +57,11 @@
   --bg-text-md-code: #2a3140;
   --bg-block-md-quote: transparent;
   --color-block-md-quote: #8ab5e6;
-  --color-block-md-warn: #e0b35e;
-  --color-block-md-caut: #f28585;
-  --color-block-md-impo: #e3a9f3;
-  --color-block-md-tip: #5bc6ae;
-  --color-block-md-note: #8ab5e6;
+  --color-block-md-warn: rgba(224, 179, 94, 0.8);
+  --color-block-md-caut: rgba(242, 133, 133, 0.8);
+  --color-block-md-impo: rgba(227, 169, 243, 0.8);
+  --color-block-md-tip: rgba(91, 198, 174, 0.8);
+  --color-block-md-note: rgba(138, 181, 230, 0.8);
   --bg-block-md-warn: rgba(224, 179, 94, 0.08);
   --bg-block-md-caut: rgba(242, 133, 133, 0.08);
   --bg-block-md-impo: rgba(227, 169, 243, 0.08);
