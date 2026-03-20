@@ -1,76 +1,145 @@
-// catalog js
-let catalog = document.getElementById("catalog");
-let tocElement = document.getElementsByClassName("catalog-content")[0]
-let postContent = document.querySelector("#post-details .post-content");
+;(function () {
+  var catalog = document.getElementById('catalog')
+  var toggleButton = document.getElementById('btn-catalog')
+  var toggleIcon = document.getElementById('btn-catalog-icon')
+  var postDetails = document.getElementById('post-details')
+  if (!catalog || !toggleButton) return
 
-function getCatalogTopHeight() {
-  if (!postContent) return catalog.offsetTop
-  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-  return postContent.getBoundingClientRect().top + scrollTop
-}
+  var tocLinks = Array.prototype.slice.call(catalog.querySelectorAll('.toc-link'))
+  if (!tocLinks.length) return
 
-// 是否固定目录
-function changePos() {
-  let catalogTopHeight = getCatalogTopHeight()
-  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-  if (scrollTop > catalogTopHeight - 20) {
-    catalog.style = "position: fixed; top: 20px; bottom: 20px;"
-  } else {
-    catalog.style = `position: absolute; top: ${catalogTopHeight}px`
-  }
-}
+  var headingMap = tocLinks
+    .map(function (link) {
+      var href = link.getAttribute('href') || ''
+      if (!href.startsWith('#')) return null
+      var id = decodeURIComponent(href.slice(1))
+      var heading = document.getElementById(id)
+      if (!heading) return null
+      return { link: link, heading: heading }
+    })
+    .filter(Boolean)
 
-// 是否激活目录
-function isActiveCat() {
-  // 可宽限高度值
-  let offsetHeight = 20
+  if (!headingMap.length) return
 
-  // 当前页面滚动位置距页面顶部的高度值
-  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+  var activeId = ''
 
-  // 页面所有标题列表
-  let headerLinkList = document.getElementsByClassName("headerlink")
-
-  if (!headerLinkList.length) return
-
-  // 页面所有目录列表
-  let catLinkList = document.getElementsByClassName("toc-link")
-
-  for(let i = 0; i < catLinkList.length; i++) {
-    let currentTopCat = headerLinkList[i].offsetTop - offsetHeight
-    let nextTopCat = i + 1 === headerLinkList.length ?
-        Infinity : headerLinkList[i+1].offsetTop - offsetHeight
-
-    if (scrollTop >= currentTopCat && scrollTop < nextTopCat) {
-      // 目录跟随滚动
-      catLinkList[i].className = "toc-link active"
-      tocElement.scrollTop = catLinkList[i].offsetTop - 32
-    } else {
-      catLinkList[i].className = "toc-link"
+  function syncLayout() {
+    var expanded = !catalog.classList.contains('hidden')
+    setExpanded(expanded)
+    if (postDetails) {
+      postDetails.classList.toggle('catalog-open', expanded && window.innerWidth > 888)
     }
   }
-}
 
-// 窗体高度变化时
-function handleResize() {
-  let windowHeight = document.documentElement.clientHeight
-  tocElement.setAttribute('style', `height: ${windowHeight - 90}px`);
-}
-
-// 小屏下（屏宽小于888px）是否展开目录
-function openOrHiddenCatalog() {
-  let isHidden = catalog.classList.contains('hidden')
-  if (isHidden) {
-    catalog.classList.remove('hidden')
-  } else {
-    catalog.classList.add('hidden')
+  function setExpanded(expanded) {
+    toggleButton.setAttribute('aria-expanded', expanded ? 'true' : 'false')
+    if (toggleIcon) {
+      toggleIcon.className = expanded
+        ? 'btn-catalog__arrow is-expanded'
+        : 'btn-catalog__arrow is-collapsed'
+    }
   }
-}
 
-changePos();
-isActiveCat();
-handleResize();
-document.addEventListener("scroll", changePos, false);
-document.addEventListener("scroll", isActiveCat, false);
-window.addEventListener("resize", handleResize, false);
-document.querySelector("#btn-catalog").addEventListener("click", openOrHiddenCatalog, false);
+  function setActive(id) {
+    if (!id || id === activeId) return
+    activeId = id
+
+    headingMap.forEach(function (item) {
+      var isActive = item.heading.id === id
+      item.link.classList.toggle('active', isActive)
+      if (isActive) {
+        item.link.scrollIntoView({ block: 'nearest' })
+      }
+    })
+  }
+
+  if ('IntersectionObserver' in window) {
+    var visibleHeadings = new Map()
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            visibleHeadings.set(entry.target.id, entry.boundingClientRect.top)
+          } else {
+            visibleHeadings.delete(entry.target.id)
+          }
+        })
+
+        if (visibleHeadings.size) {
+          var nextId = Array.from(visibleHeadings.entries()).sort(function (a, b) {
+            return a[1] - b[1]
+          })[0][0]
+          setActive(nextId)
+          return
+        }
+
+        var scrollY = window.scrollY || window.pageYOffset
+        for (var i = headingMap.length - 1; i >= 0; i -= 1) {
+          if (headingMap[i].heading.offsetTop - 120 <= scrollY) {
+            setActive(headingMap[i].heading.id)
+            return
+          }
+        }
+
+        setActive(headingMap[0].heading.id)
+      },
+      {
+        rootMargin: '-96px 0px -65% 0px',
+        threshold: [0, 1],
+      }
+    )
+
+    headingMap.forEach(function (item) {
+      observer.observe(item.heading)
+    })
+  } else {
+    function onScroll() {
+      var scrollY = window.scrollY || window.pageYOffset
+      for (var i = headingMap.length - 1; i >= 0; i -= 1) {
+        if (headingMap[i].heading.offsetTop - 120 <= scrollY) {
+          setActive(headingMap[i].heading.id)
+          return
+        }
+      }
+      setActive(headingMap[0].heading.id)
+    }
+
+    document.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+  }
+
+  setActive(headingMap[0].heading.id)
+
+  toggleButton.addEventListener('click', function () {
+    var nextHidden = !catalog.classList.contains('hidden')
+    catalog.classList.toggle('hidden', nextHidden)
+    syncLayout()
+  })
+
+  tocLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (window.innerWidth <= 888) {
+        catalog.classList.add('hidden')
+        syncLayout()
+      }
+    })
+  })
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 888 && catalog.classList.contains('hidden')) {
+      catalog.classList.remove('hidden')
+    }
+    if (window.innerWidth <= 888 && !catalog.classList.contains('hidden')) {
+      catalog.classList.add('hidden')
+    }
+    syncLayout()
+  })
+
+  if (window.innerWidth <= 888) {
+    catalog.classList.add('hidden')
+  } else {
+    catalog.classList.remove('hidden')
+  }
+
+  syncLayout()
+})()
