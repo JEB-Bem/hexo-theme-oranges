@@ -259,6 +259,111 @@ a:hover {
   transform: translate3d(0, 0, 0);
 }
 
+.markdown-body .shiki,
+.markdown-body .shiki span {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.markdown-body .shiki {
+  background-color: transparent !important;
+}
+
+.markdown-body img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 1.6rem auto;
+  border-radius: 14px;
+  border: 4px solid color-mix(in srgb, var(--color-text-base) 34%, transparent);
+  background: transparent;
+}
+
+:root[color-mode="dark"] .markdown-body .shiki {
+  background-color: transparent !important;
+  color: var(--shiki-dark) !important;
+}
+
+:root[color-mode="dark"] .markdown-body .shiki span:not([style*="--shiki-dark:"]) {
+  color: var(--shiki-dark) !important;
+}
+
+:root[color-mode="dark"] .markdown-body .shiki span[style*="--shiki-dark:"] {
+  color: var(--shiki-dark) !important;
+}
+
+.markdown-body pre.shiki {
+  position: relative;
+  border-radius: 14px;
+  border: 2px solid color-mix(in srgb, var(--color-text-base) 15%, transparent);
+  padding-right: 48px !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body .shiki-copy-button {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: var(--color-text-base);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.markdown-body pre.shiki:hover .shiki-copy-button,
+.markdown-body pre.shiki:focus-within .shiki-copy-button {
+  opacity: 0.72;
+  pointer-events: auto;
+}
+
+.markdown-body .shiki-copy-button svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.markdown-body .shiki-copy-button:hover {
+  opacity: 1;
+  color: var(--color-text-a-hover);
+}
+
+.markdown-body .shiki-copy-button.is-copied {
+  color: #2f9e44;
+}
+
+.markdown-body .shiki-copy-button.is-failed {
+  color: #d94841;
+}
+
+:root[color-mode="dark"] .markdown-body .shiki-copy-button {
+  color: #cdd6f4;
+}
+
+:root[color-mode="dark"] .markdown-body .shiki-copy-button.is-copied {
+  color: rgba(47, 158, 68, 0.82);
+}
+
+:root[color-mode="dark"] .markdown-body .shiki-copy-button.is-failed {
+  color: #ff6b6b;
+}
+
+
 .signature-hitokoto:hover {
   opacity: 0.82;
 }
