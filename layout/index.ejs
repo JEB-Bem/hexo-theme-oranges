@@ -1,32 +1,104 @@
-<div class="container index">
-  <div class="post-list">
-    <!-- 遍历渲染文章 -->
-    <% page.posts.forEach(function(item) { %>
-      <div class="post-item" title="<%- item.title %>">
-        <div class="time-m-d"><%- item.date.format("YYYY-MM-DD") %></div>
-        <div class="title">
-          <a href="<%- url_for(item.path) %>">
-            <% if(item.title !== "") { %>
-              <% if (item.top) { %>
-                <span><span title="<%= __('pinned') %>" class="icon iconfont icon-pin-top post-top"></span><%- item.title %></span>
-              <% } else { %>
-                <span><%- item.title %></span>
-              <% } %>
-            <% } else { %>
-              <span>untitled</span>
-            <% } %>
-          </a>
-        </div>
+<%
+  var homeData = (site.data && site.data.home) || {};
+  var homeHero = homeData.hero || {};
+  var homeProfile = homeData.profile || {};
+  var homeFeatured = homeData.featured || {};
+  var homeRecent = homeData.recent || {};
+  var featuredCount = homeFeatured.count || 12;
+  var recentCount = homeRecent.count || 12;
+  var favoritesData = (site.data && site.data.favorites) || {};
+  var favoriteItems = (favoritesData.items || []).slice(0, featuredCount);
+  var recentPosts = [];
+  var pinnedRecentPosts = [];
+  var regularRecentPosts = [];
+
+  site.posts.sort('date', -1).each(function(item) {
+    if (item.top) {
+      pinnedRecentPosts.push(item);
+    } else {
+      regularRecentPosts.push(item);
+    }
+  });
+
+  recentPosts = pinnedRecentPosts.concat(regularRecentPosts).slice(0, recentCount);
+
+  var profilePath = homeProfile.path || theme.avatar.path || '/about/';
+  var profilePhoto = homeProfile.photo || theme.avatar.author_photo;
+  var profileName = homeProfile.name || config.title;
+  var profileGreeting = homeProfile.greeting || "Welcome, this is Jeb's blog";
+  var profileDescription = homeProfile.description || config.description;
+%>
+
+<div class="container index home-shell">
+  <% if (homeHero.enable) { %>
+    <section class="home-hero">
+      <% if (homeHero.eyebrow) { %>
+        <div class="home-hero-eyebrow"><%- homeHero.eyebrow %></div>
+      <% } %>
+      <% if (homeHero.title) { %>
+        <h1 class="home-hero-title"><%- homeHero.title %></h1>
+      <% } %>
+      <% if (homeHero.description) { %>
+        <p class="home-hero-description"><%- homeHero.description %></p>
+      <% } %>
+    </section>
+  <% } %>
+
+  <section class="home-profile">
+    <div class="home-profile-copy">
+      <div class="home-profile-site"><%- profileName %></div>
+      <div class="home-profile-greeting"><%- profileGreeting %></div>
+      <p class="home-profile-description"><%- profileDescription %></p>
+      <a class="home-profile-link" href="<%- url_for(profilePath) %>">About me 👉</a>
+    </div>
+    <a class="home-profile-avatar" href="<%- url_for(profilePath) %>" aria-label="About">
+      <img no-lazy src="<%- profilePhoto %>" alt="<%- config.author %> avatar">
+    </a>
+  </section>
+
+  <section class="home-panels">
+    <div class="home-panel home-panel-featured">
+      <div class="home-panel-heading">
+        <h2><a href="<%- url_for('/favorites/') %>"><%- homeFeatured.title || '推荐文章>>' %></a></h2>
+        <span><%- homeFeatured.subtitle || '有趣，值得一看' %></span>
       </div>
-    <% }) %>
-  </div>
-  <nav class="post-navigation">
-    <% if(page.prev !== 0){ %>
-      <a href="<%- url_for(page.prev_link)%>"><i class="iconfont icon-angleleft"></i></a>
-    <% } %>
-    <span class="page-num"><%- page.current %> / <%- page.total -%></span>
-    <% if(page.next !== 0){ %>
-      <a href="<%- url_for(page.next_link)%>"><i class="iconfont icon-angleright"></i></a>
-    <% } %>
-  </nav>
+      <ul class="home-entry-list">
+        <% favoriteItems.forEach(function(item) { %>
+          <li class="home-entry-item">
+            <a class="home-entry-link" href="<%- url_for(item.path) %>" title="<%- item.title %>">
+              <div class="home-entry-title">
+                <span><%- item.title || 'untitled' %></span>
+              </div>
+            </a>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <div class="home-panel home-panel-latest">
+      <div class="home-panel-heading">
+        <h2><a href="<%- url_for('/posts/') %>"><%- homeRecent.title || '最新文章>>' %></a></h2>
+        <span><%- homeRecent.subtitle || '思考 | 记录' %></span>
+      </div>
+      <ul class="home-entry-list home-latest-list">
+        <% recentPosts.forEach(function(item) { %>
+          <li class="home-entry-item" title="<%- item.title %>">
+            <a class="home-entry-link" href="<%- url_for(item.path) %>">
+              <div class="home-entry-title">
+                <% if(item.title !== "") { %>
+                  <% if (item.top) { %>
+                    <span class="post-title-top"><%- item.title %></span>
+                  <% } else { %>
+                    <span><%- item.title %></span>
+                  <% } %>
+                <% } else { %>
+                  <span>untitled</span>
+                <% } %>
+              </div>
+            </a>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </section>
 </div>

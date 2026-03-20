@@ -63,18 +63,23 @@ navbar:
     path: /
     key: home
   -
-    name: Archives
+    name: Posts
     enable: true
+    path: /posts/
+    key: posts
+  -
+    name: Archives
+    enable: false
     path: /archives/
     key: archives
   -
     name: Categories
-    enable: true
+    enable: false
     path: /categories/
     key: categories
   -
     name: Tags
-    enable: true
+    enable: false
     path: /tags/
     key: tags
   -
@@ -87,6 +92,11 @@ navbar:
     enable: true
     path: /tools/
     key: tools
+  -
+    name: Favorites
+    enable: true
+    path: /favorites/
+    key: favorites
   -
     name: Friends
     enable: true

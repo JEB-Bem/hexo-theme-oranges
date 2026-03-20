@@ -10,7 +10,9 @@
     about: __('about'),
     friends: __('friend'),
     presentations: __('presentations'),
-    tools: __('tools')
+    tools: __('tools'),
+    favorites: 'Favorites',
+    posts: 'Posts'
   }
 %>
 
@@ -121,6 +123,118 @@
     <div class="container tools-index">
       <div class="tools-content">
         <%- partial('_partial/tools-page', { toolsPage: site.data.tools || {} }) %>
+      </div>
+    </div>
+  <% } %>
+
+  <% if(page.type === "favorites") { %>
+  <% var favoritesData = (site.data && site.data.favorites) || {}; %>
+    <div class="container collection-index">
+      <div class="collection-shell">
+        <div class="collection-heading">
+          <h1>Favorites</h1>
+          <p><%- favoritesData.description || '我推荐给别人的文章列表。只维护标题和站内链接，首页与此页面会自动同步。' %></p>
+        </div>
+        <div class="collection-list">
+          <% (favoritesData.items || []).forEach(function(item) { %>
+            <div class="collection-item">
+              <a href="<%- url_for(item.path) %>"><%- item.title %></a>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  <% } %>
+
+  <% if(page.type === "posts") { %>
+    <%
+      var currentPageNum = page.current;
+      var pageMax = config.per_page || 10;
+      var totalPosts = site.posts.length;
+      var postsToShow = Array.isArray(page.posts) ? page.posts : page.posts.toArray();
+      var showingCount = postsToShow.length;
+    %>
+    <div class="container posts-index">
+      <div class="posts-shell">
+        <main class="posts-main">
+          <div class="posts-heading">
+            <h1>Posts</h1>
+          </div>
+          <div class="posts-toolbar">
+            <div class="posts-toolbar-summary">
+              Page <%= currentPageNum %> - Showing <%= showingCount %> of <%= totalPosts %>
+            </div>
+            <a class="posts-toolbar-link" href="<%- url_for('/archives/') %>">Archives &rarr;</a>
+          </div>
+          <div class="posts-card-list">
+            <% postsToShow.forEach(function(item) { %>
+              <%
+                var itemDescription = item.description || '';
+                if (!itemDescription && item.excerpt) {
+                  itemDescription = item.excerpt.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+                }
+                var itemCategories = (item.categories && item.categories.data) || [];
+                var itemTags = (item.tags && item.tags.data) || [];
+              %>
+              <article class="posts-card<%= item.top ? ' is-top' : '' %>" title="<%- item.title %>">
+                <div class="posts-card-date"><%- item.date.format("MMM DD, YYYY") %></div>
+                <a class="posts-card-title-link" href="<%- url_for(item.path) %>">
+                  <div class="posts-card-title"><%- item.title || 'untitled' %></div>
+                </a>
+                <% if (itemDescription) { %>
+                  <p class="posts-card-description"><%- itemDescription %></p>
+                <% } %>
+                <div class="posts-card-meta">
+                  <% if (itemCategories.length > 0) { %>
+                    <div class="posts-card-group">
+                      <span class="posts-card-label">Category</span>
+                      <div class="posts-card-chips">
+                        <% itemCategories.forEach(function(category) { %>
+                          <a class="posts-chip posts-chip-category" href="<%- url_for(category.path) %>"><%- category.name %></a>
+                        <% }) %>
+                      </div>
+                    </div>
+                  <% } %>
+                  <% if (itemTags.length > 0) { %>
+                    <div class="posts-card-group">
+                      <span class="posts-card-label">Tags</span>
+                      <div class="posts-card-chips">
+                        <% itemTags.forEach(function(tag) { %>
+                          <a class="posts-chip" href="<%- url_for(tag.path) %>"><%- tag.name %></a>
+                        <% }) %>
+                      </div>
+                    </div>
+                  <% } %>
+                </div>
+                <a class="posts-card-arrow" href="<%- url_for(item.path) %>" aria-label="<%- item.title || 'untitled' %>"></a>
+              </article>
+            <% }) %>
+          </div>
+          <div class="posts-pagination">
+            <% if (page.prev !== 0) { %>
+              <a class="posts-pagination-link" href="<%- url_for(page.prev_link) %>">&larr; Previous Posts</a>
+            <% } else { %>
+              <span class="posts-pagination-link is-disabled">&larr; Previous Posts</span>
+            <% } %>
+            <% if (page.next !== 0) { %>
+              <a class="posts-pagination-link" href="<%- url_for(page.next_link) %>">Next Posts &rarr;</a>
+            <% } else { %>
+              <span class="posts-pagination-link is-disabled">Next Posts &rarr;</span>
+            <% } %>
+          </div>
+        </main>
+        <div class="posts-sidebar">
+          <div class="posts-sidebar-sticky">
+            <div class="posts-sidebar-title">Tags</div>
+              <div class="posts-sidebar-tags">
+                <% site.tags.sort('name', 1).each(function(tag) { %>
+                  <a class="posts-sidebar-tag" href="<%- url_for(tag.path) %>">
+                    <span><%- tag.name %></span>
+                  </a>
+                <% }) %>
+              </div>
+            </div>
+        </div>
       </div>
     </div>
   <% } %>
