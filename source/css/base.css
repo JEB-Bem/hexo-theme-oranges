@@ -52,6 +52,33 @@
 }
 
 @font-face {
+    font-family: "LXGW WenKai";
+    src: url("/fonts/LXGWWenKai-Light.woff2") format("woff2"),
+         url("/fonts/LXGWWenKai-Light.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "LXGW WenKai";
+    src: url("/fonts/LXGWWenKai-Regular.woff2") format("woff2"),
+         url("/fonts/LXGWWenKai-Regular.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "LXGW WenKai";
+    src: url("/fonts/LXGWWenKai-Medium.woff2") format("woff2"),
+         url("/fonts/LXGWWenKai-Medium.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
     font-family: "Maple Mono NF CN";
     src: url("/fonts/MapleMono-NF-CN-Regular.woff2") format("woff2"),
          url("/fonts/MapleMono-NF-CN-Regular.ttf") format("truetype");
@@ -98,7 +125,7 @@ html, body {
   letter-spacing: 0.01rem;
   background-color: var(--bg-body);
   transition: color 400ms ease-in-out 0s, background-color 400ms ease-in-out 0s;
-  font-family: "ui-sans-serif","-apple-system","system-ui","Segoe UI","Helvetica","Apple Color Emoji","Arial","sans-serif","Segoe UI Emoji","Segoe UI Symbol"
+  font-family: "LXGW WenKai", "KaiTi", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif
 }
 
 body.hidden {
@@ -895,7 +922,7 @@ a:hover {
   margin: 0 15px;
   font-size: 1.65rem;
   font-weight: 400;
-  font-family: Arial, sans-serif;
+  font-family: "LXGW WenKai", "KaiTi", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
   text-align: center;
 }
 
