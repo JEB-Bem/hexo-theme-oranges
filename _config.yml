@@ -143,6 +143,11 @@ friends:
     avatar: https://files.mastodon.social/accounts/avatars/000/253/738/original/825f49f8c3203a87.png
     site: https://danluu.com/
     description: Creating programming blog posts
+  -
+    name: Stel Clementine
+    avatar: https://stelclementine.com/_astro/avatar.D8--_MBf_Z17G0OJ.webp
+    site: https://stelclementine.com/
+    description: Designed an interesting blog theme.
 
 
 # 长期未活跃的友链
@@ -250,15 +255,6 @@ postShare:
   facebook:
     enable: true
 
-# 代码块配置
-codeBlock:
-  # 代码块风格，默认normal
-  # 可选：默认风格'normal'；mac黑色风格：'mac-black'
-  style: 'normal'
-  # 代码复制
-  copy:
-    enable: true
-
 # MathJax Support
 # 数学公式支持
 mathjax:
@@ -282,11 +278,6 @@ cdns:
   mathjax:
     enable: false
     url: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
-
-  # 代码块复制
-  clipboard:
-    enable: false
-    url: https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js
 
 # 主题色
 themeColor: '#86bdf3'

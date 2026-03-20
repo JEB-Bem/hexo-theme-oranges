@@ -2,6 +2,7 @@
   var catalog = document.getElementById('catalog')
   var toggleButton = document.getElementById('btn-catalog')
   var toggleIcon = document.getElementById('btn-catalog-icon')
+  var catalogContent = catalog ? catalog.querySelector('.catalog-content') : null
   var postDetails = document.getElementById('post-details')
   if (!catalog || !toggleButton) return
 
@@ -47,8 +48,17 @@
     headingMap.forEach(function (item) {
       var isActive = item.heading.id === id
       item.link.classList.toggle('active', isActive)
-      if (isActive) {
-        item.link.scrollIntoView({ block: 'nearest' })
+      if (isActive && catalogContent) {
+        var linkTop = item.link.offsetTop
+        var linkBottom = linkTop + item.link.offsetHeight
+        var viewportTop = catalogContent.scrollTop
+        var viewportBottom = viewportTop + catalogContent.clientHeight
+
+        if (linkTop < viewportTop) {
+          catalogContent.scrollTop = Math.max(linkTop - 12, 0)
+        } else if (linkBottom > viewportBottom) {
+          catalogContent.scrollTop = linkBottom - catalogContent.clientHeight + 12
+        }
       }
     })
   }
