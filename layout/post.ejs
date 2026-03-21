@@ -38,6 +38,7 @@
   <!-- 朋友页 url形式：https://yoursite/friends/ -->
   <div class="container friend-index">
     <div class="friend-section">
+      <h2 class="friend-section-title">活跃链接</h2>
       <div class="friend-list">
         <% for(let friend of theme.friends) { %>
           <% 
@@ -129,19 +130,29 @@
 
   <% if(page.type === "favorites") { %>
   <% var favoritesData = (site.data && site.data.favorites) || {}; %>
+  <% var favoriteItems = favoritesData.items || []; %>
     <div class="container collection-index">
       <div class="collection-shell">
-        <div class="collection-heading">
-          <h1>Favorites</h1>
-          <p><%- favoritesData.description || '我推荐给别人的文章列表。只维护标题和站内链接，首页与此页面会自动同步。' %></p>
-        </div>
-        <div class="collection-list">
-          <% (favoritesData.items || []).forEach(function(item) { %>
-            <div class="collection-item">
-              <a href="<%- url_for(item.path) %>"><%- item.title %></a>
-            </div>
+        <section class="collection-hero">
+          <p class="collection-eyebrow">Curated Reading</p>
+          <div class="collection-heading">
+            <h1>Favorites</h1>
+            <p><%- favoritesData.description || '这里收的是我觉得有深度，或者足够有趣、值得反复回看的文章。只保留标题，让列表本身像一份干净的阅读目录。' %></p>
+          </div>
+          <div class="collection-meta">
+            <span><%= favoriteItems.length %> picks</span>
+          </div>
+        </section>
+        <section class="collection-list" aria-label="Favorite articles">
+          <% favoriteItems.forEach(function(item, index) { %>
+            <article class="collection-item">
+              <span class="collection-item-index"><%= String(index + 1).padStart(2, '0') %></span>
+              <a class="collection-item-link" href="<%- url_for(item.path) %>">
+                <span class="collection-item-title"><%- item.title %></span>
+              </a>
+            </article>
           <% }) %>
-        </div>
+        </section>
       </div>
     </div>
   <% } %>

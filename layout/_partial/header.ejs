@@ -6,9 +6,50 @@
   var metaDescription = page.description || config.description;
   var ogDescription = page.ogdescription || page.description || config.description;
   var metaKeywords = page.keywords || config.keywords;
+  var pageStyles = [];
 
   if (Array.isArray(metaKeywords)) {
     metaKeywords = metaKeywords.join(', ');
+  }
+
+  if (is_home()) {
+    pageStyles.push('home');
+  }
+
+  if (is_tag() || is_category() || page.type === 'tags' || page.type === 'categories') {
+    pageStyles.push('taxonomy');
+  }
+
+  if (is_archive() || is_tag()) {
+    pageStyles.push('posts');
+  }
+
+  if (is_archive()) {
+    pageStyles.push('archive');
+  }
+
+  if (page.type === 'about') {
+    pageStyles.push('about');
+  }
+
+  if (page.type === 'friends') {
+    pageStyles.push('friends');
+  }
+
+  if (page.type === 'tools') {
+    pageStyles.push('tools');
+  }
+
+  if (page.type === 'favorites') {
+    pageStyles.push('favorites');
+  }
+
+  if (page.type === 'posts') {
+    pageStyles.push('posts');
+  }
+
+  if (!is_home() && !is_archive() && !is_tag() && !is_category() && !page.type) {
+    pageStyles.push('post-detail');
   }
   %>
 
@@ -79,6 +120,9 @@
 
   <!-- hexo site css -->
   <link rel="stylesheet" href="/css/main.css" />
+  <% pageStyles.forEach(function(styleName) { %>
+    <link rel="stylesheet" href="/css/pages/<%= styleName %>.css" />
+  <% }) %>
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
 
   <!-- katex -->

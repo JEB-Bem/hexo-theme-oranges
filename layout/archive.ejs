@@ -3,8 +3,8 @@
 <!-- last: 按年份把文章分组，当前遍历到的年份 -->
 <!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
+<div class="container posts-index archive-posts archives">
+  <main class="posts-main archive-posts-main">
     <%
       var prev = -10086;// prev year
       var curr;// curr year, ever step be updated
@@ -12,27 +12,38 @@
       site.posts.sort('date', -1).each(function(item, index) {
         curr = item.date.year()
         if (curr !== prev) {
+          if (prev !== -10086) {
+    %>
+        </div>
+      </section>
+    <%
+          }
           prev = curr;
       %>
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span><%- curr %></span>
-          </h2>
+      <section class="archive-year-group">
+        <div class="archive-year-heading">
+          <h2><%- curr %></h2>
         </div>
+        <div class="posts-card-list archive-card-list">
       <%
         }
       %>
-      <div class="post-item" title="<%- item.title %>">
-        <div class="time-m-d"><%- item.date.format("MM-DD") %></div>
-        <div class="title">
-          <a href="<%- url_for(item.path) %>">
-            <span><%- item.title %></span>
+        <article class="posts-card<%= item.top ? ' is-top' : '' %>" title="<%- item.title %>">
+          <div class="posts-card-date"><%- item.date.format("MMM DD, YYYY") %></div>
+          <a class="posts-card-title-link" href="<%- url_for(item.path) %>">
+            <div class="posts-card-title"><%- item.title || 'untitled' %></div>
           </a>
-        </div>
-      </div>
+          <% if (item.description || item.excerpt) { %>
+            <p class="posts-card-description">
+              <%- (item.description || item.excerpt.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()) %>
+            </p>
+          <% } %>
+          <a class="posts-card-arrow" href="<%- url_for(item.path) %>" aria-label="<%- item.title || 'untitled' %>"></a>
+        </article>
     <%
       });
     %>
-  </div>
+        </div>
+      </section>
+  </main>
 </div>

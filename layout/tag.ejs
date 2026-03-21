@@ -1,28 +1,66 @@
 <!-- 标签详情页，展示某个标签下的文章列表，url形式：https://yoursite/tags/某个标签/ -->
 
-<div class="container tag-details">
-  <div class="content-title">
-    <h2>
-      <span><%- page.tag %></span>
-    </h2>
-  </div>
-  <% page.posts.sort('date', -1).each(function(item) { %>
-    <div class="post-list">
-      <div class="post-item" title="<%- item.title %>">
-        <span class="time-m-d"><%- item.date.format("YYYY-MM-DD") %></span>
-        <a href="<%- url_for(item.path) %>">
-          <span><%- item.title %></span>
-        </a>
-      </div>
+<div class="container posts-index tag-details">
+  <main class="posts-main">
+    <div class="posts-heading taxonomy-heading">
+      <h1><%- page.tag %></h1>
+      <p><%- page.posts.length %> posts</p>
     </div>
-  <% }) %>
-  <nav class="post-navigation">
-    <% if(page.prev !== 0){ %>
-      <a href="<%- url_for(page.prev_link)%>"><i class="iconfont icon-angleleft"></i></a>
-    <% } %>
-    <span class="page-num"><%- page.current %> / <%- page.total -%></span>
-    <% if(page.next !== 0){ %>
-      <a href="<%- url_for(page.next_link)%>"><i class="iconfont icon-angleright"></i></a>
-    <% } %>
-  </nav>
+    <div class="posts-card-list taxonomy-card-list">
+      <% page.posts.sort('date', -1).each(function(item) { %>
+        <%
+          var itemDescription = item.description || '';
+          if (!itemDescription && item.excerpt) {
+            itemDescription = item.excerpt.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+          }
+          var itemCategories = (item.categories && item.categories.data) || [];
+          var itemTags = (item.tags && item.tags.data) || [];
+        %>
+        <article class="posts-card<%= item.top ? ' is-top' : '' %>" title="<%- item.title %>">
+          <div class="posts-card-date"><%- item.date.format("MMM DD, YYYY") %></div>
+          <a class="posts-card-title-link" href="<%- url_for(item.path) %>">
+            <div class="posts-card-title"><%- item.title || 'untitled' %></div>
+          </a>
+          <% if (itemDescription) { %>
+            <p class="posts-card-description"><%- itemDescription %></p>
+          <% } %>
+          <div class="posts-card-meta">
+            <% if (itemCategories.length > 0) { %>
+              <div class="posts-card-group">
+                <span class="posts-card-label">Category</span>
+                <div class="posts-card-chips">
+                  <% itemCategories.forEach(function(category) { %>
+                    <a class="posts-chip posts-chip-category" href="<%- url_for(category.path) %>"><%- category.name %></a>
+                  <% }) %>
+                </div>
+              </div>
+            <% } %>
+            <% if (itemTags.length > 0) { %>
+              <div class="posts-card-group">
+                <span class="posts-card-label">Tags</span>
+                <div class="posts-card-chips">
+                  <% itemTags.forEach(function(tag) { %>
+                    <a class="posts-chip" href="<%- url_for(tag.path) %>"><%- tag.name %></a>
+                  <% }) %>
+                </div>
+              </div>
+            <% } %>
+          </div>
+          <a class="posts-card-arrow" href="<%- url_for(item.path) %>" aria-label="<%- item.title || 'untitled' %>"></a>
+        </article>
+      <% }) %>
+    </div>
+    <nav class="posts-pagination taxonomy-pagination">
+      <% if (page.prev !== 0) { %>
+        <a class="posts-pagination-link" href="<%- url_for(page.prev_link)%>">&larr; Previous Posts</a>
+      <% } else { %>
+        <span class="posts-pagination-link is-disabled">&larr; Previous Posts</span>
+      <% } %>
+      <% if (page.next !== 0) { %>
+        <a class="posts-pagination-link" href="<%- url_for(page.next_link)%>">Next Posts &rarr;</a>
+      <% } else { %>
+        <span class="posts-pagination-link is-disabled">Next Posts &rarr;</span>
+      <% } %>
+    </nav>
+  </main>
 </div>

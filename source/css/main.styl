@@ -34,7 +34,7 @@ $theme-color = convert(hexo-config('themeColor'))
       border-bottom: 2px solid $theme-color;
     }
   }
-  b, {
+  b {
     color: #5d8ab6;
   }
   blockquote {
@@ -44,19 +44,6 @@ $theme-color = convert(hexo-config('themeColor'))
     text-align: left;
     overflow-x: auto;
     overflow-y: hidden;
-  }
-}
-
-.toc-link {
-  &:hover {
-    &::after {
-      background-color: $theme-color;
-    }
-  }
-  &.active {
-    &::after {
-      background-color: $theme-color;
-    }
   }
 }
 

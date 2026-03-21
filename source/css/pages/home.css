@@ -1,0 +1,238 @@
+.home-shell {
+  width: min(var(--page-width), calc(100% - var(--page-edge-gap)));
+  padding: 4px 0 0;
+}
+
+.home-hero {
+  padding: 18px 0 30px;
+  text-align: center;
+}
+
+.home-hero-eyebrow {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  letter-spacing: 0.24em;
+  color: var(--color-text-sub);
+}
+
+.home-hero-title {
+  margin: 0 0 16px;
+  font-size: clamp(3rem, 4vw, 4.6rem);
+  line-height: 1.12;
+  color: var(--color-text-md-title);
+}
+
+.home-hero-description {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  font-size: 1.7rem;
+  line-height: 1.9;
+  color: var(--color-text-base);
+}
+
+.home-profile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  gap: 42px;
+  align-items: center;
+  padding: 28px 0 36px;
+}
+
+.home-profile-copy {
+  min-width: 0;
+}
+
+.home-profile-site {
+  margin-bottom: 14px;
+  font-size: clamp(2.8rem, 3.4vw, 4.2rem);
+  line-height: 1.1;
+  color: var(--color-text-md-title);
+}
+
+.home-profile-greeting {
+  margin-bottom: 16px;
+  font-size: clamp(2rem, 2.3vw, 3rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text-a-hover);
+}
+
+.home-profile-description {
+  margin: 0;
+  font-size: 1.7rem;
+  line-height: 1.9;
+  color: var(--color-text-base);
+}
+
+.home-profile-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 18px;
+  font-size: 1.5rem;
+  color: var(--theme-accent-text);
+}
+
+.home-profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  overflow: hidden;
+  justify-self: center;
+  background: color-mix(in srgb, var(--theme-accent) 85%, white);
+  box-shadow: 0 24px 44px var(--theme-accent-shadow);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.home-profile-avatar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 28px 50px var(--theme-accent-shadow);
+}
+
+.home-profile-avatar img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.home-panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  margin-bottom: 12px;
+}
+
+.home-panel {
+  padding: 28px 28px 24px;
+  border-radius: 28px;
+  border: 1px solid color-mix(in srgb, var(--color-text-base) 24%, transparent);
+  background: transparent;
+}
+
+.home-panel-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.home-panel-heading h2 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: var(--color-text-md-title);
+}
+
+.home-panel-heading h2 a {
+  color: inherit;
+  border-bottom: none;
+}
+
+.home-panel-heading h2 a:hover {
+  border-bottom: none;
+  color: var(--theme-accent-text);
+}
+
+.home-panel-heading span {
+  font-size: 1.35rem;
+  color: var(--color-text-sub);
+}
+
+.home-entry-list,
+.home-latest-list {
+  margin: 0;
+  padding-left: 1.8em;
+  list-style: disc;
+}
+
+.home-entry-list .home-entry-item::marker {
+  color: color-mix(in srgb, var(--color-text-base) 72%, transparent);
+}
+
+.home-entry-item {
+  margin-bottom: 10px;
+}
+
+.home-entry-item:last-child {
+  margin-bottom: 0;
+}
+
+.home-entry-link {
+  display: inline-block;
+  padding: 0;
+  border-bottom: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.home-entry-link:hover {
+  transform: translateX(4px);
+  border-bottom: none;
+}
+
+.home-entry-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: var(--color-text-a-hover);
+  white-space: normal;
+  word-break: break-word;
+}
+
+.post-title-top {
+  color: var(--theme-accent-text);
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .home-shell {
+    width: min(var(--page-width), calc(100% - var(--page-edge-gap-tablet)));
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-shell {
+    width: min(var(--page-width), calc(100% - var(--page-edge-gap-mobile)));
+  }
+
+  .home-hero {
+    padding-top: 4px;
+  }
+
+  .page-home .home-profile {
+    display: block;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 28px;
+  }
+
+  .page-home .home-profile-copy {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .page-home .home-profile-avatar {
+    display: none !important;
+  }
+
+  .page-home .home-panels {
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .page-home .home-panel {
+    min-height: 0;
+    width: 100%;
+    padding: 18px 16px;
+    border-radius: 22px;
+    box-sizing: border-box;
+    margin: 0;
+  }
+}

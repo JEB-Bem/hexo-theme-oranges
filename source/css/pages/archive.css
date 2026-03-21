@@ -1,0 +1,51 @@
+.archive-posts {
+  width: min(var(--page-width), calc(100% - var(--page-edge-gap)));
+}
+
+.archive-posts-main {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  min-width: 0;
+}
+
+.archive-year-group {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.archive-year-heading {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-navbar-divider);
+}
+
+.archive-year-heading h2 {
+  margin: 0;
+  font-size: clamp(2.4rem, 3.2vw, 3.2rem);
+  color: var(--color-text-md-title);
+}
+
+.archive-card-list {
+  gap: 16px;
+}
+
+@media (max-width: 1200px) {
+  .archive-posts {
+    width: min(var(--page-width), calc(100% - var(--page-edge-gap-tablet)));
+  }
+}
+
+@media (max-width: 1024px) {
+  .archive-posts {
+    width: min(var(--page-width), calc(100% - var(--page-edge-gap-mobile)));
+  }
+
+  .archive-posts-main {
+    gap: 22px;
+  }
+
+  .archive-year-group {
+    gap: 16px;
+  }
+}

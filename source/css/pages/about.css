@@ -1,0 +1,54 @@
+.about-index .markdown-body {
+  padding: 0 40px;
+}
+
+.about-inline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0 40px;
+}
+
+.about-inline a,
+.markdown-body .about-inline a,
+.markdown-body .about-inline a:hover {
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.about-inline-avatar,
+.markdown-body .about-inline-avatar {
+  width: 100px;
+  height: 100px;
+  max-width: none;
+  margin: 0;
+  border: 2px solid var(--color-text-base);
+  border-radius: 50%;
+  object-fit: cover;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.about-inline .nickname {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--color-text-a);
+}
+
+.about-inline .nickname a:hover {
+  border-bottom: none;
+}
+
+@media (max-width: 1200px) {
+  .about-index .markdown-body {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-index .markdown-body {
+    padding: 0;
+  }
+}
