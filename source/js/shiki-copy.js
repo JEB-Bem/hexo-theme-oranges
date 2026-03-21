@@ -9,7 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!blocks.length) return
 
   blocks.forEach((block) => {
-    if (block.querySelector('.shiki-copy-button')) return
+    let wrapper = block.parentElement
+
+    if (!wrapper || !wrapper.classList.contains('shiki-block')) {
+      wrapper = document.createElement('div')
+      wrapper.className = 'shiki-block'
+      block.parentNode.insertBefore(wrapper, block)
+      wrapper.appendChild(block)
+    }
+
+    if (wrapper.querySelector('.shiki-copy-button')) return
 
     const button = document.createElement('button')
     button.type = 'button'
@@ -38,6 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
 
-    block.appendChild(button)
+    wrapper.appendChild(button)
   })
 })

@@ -301,6 +301,10 @@ a:hover {
   color: var(--shiki-dark) !important;
 }
 
+.markdown-body .shiki-block {
+  position: relative;
+}
+
 .markdown-body pre.shiki {
   position: relative;
   border-radius: 14px;
@@ -335,8 +339,8 @@ a:hover {
   transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
-.markdown-body pre.shiki:hover .shiki-copy-button,
-.markdown-body pre.shiki:focus-within .shiki-copy-button {
+.markdown-body .shiki-block:hover .shiki-copy-button,
+.markdown-body .shiki-block:focus-within .shiki-copy-button {
   opacity: 0.72;
   pointer-events: auto;
 }
@@ -353,11 +357,11 @@ a:hover {
 }
 
 .markdown-body .shiki-copy-button.is-copied {
-  color: #2f9e44;
+  color: #63bf75d6;
 }
 
 .markdown-body .shiki-copy-button.is-failed {
-  color: #d94841;
+  color: #d94841d6;
 }
 
 :root[color-mode="dark"] .markdown-body .shiki-copy-button {
@@ -365,11 +369,11 @@ a:hover {
 }
 
 :root[color-mode="dark"] .markdown-body .shiki-copy-button.is-copied {
-  color: rgba(47, 158, 68, 0.82);
+  color: #63bf75d6;
 }
 
 :root[color-mode="dark"] .markdown-body .shiki-copy-button.is-failed {
-  color: #ff6b6b;
+  color: #d94841d6;
 }
 
 
