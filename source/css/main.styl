@@ -76,3 +76,24 @@ $theme-color = convert(hexo-config('themeColor'))
 .markdown-body h6 .headerlink::before {
   color: $theme-color;
 }
+
+/* Keep block code compact so ASCII art renders without extra vertical gaps. */
+.markdown-body pre,
+.markdown-body .highlight pre,
+.article-entry pre,
+.article-entry .highlight,
+.article-entry .highlight pre {
+  line-height: 1;
+}
+
+.markdown-body pre code,
+.markdown-body .highlight code,
+.article-entry pre code,
+.article-entry .highlight code,
+.article-entry .highlight .line {
+  line-height: inherit;
+}
+
+.article-entry .highlight .line {
+  height: auto;
+}

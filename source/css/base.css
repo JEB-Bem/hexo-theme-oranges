@@ -125,7 +125,7 @@ html, body {
   letter-spacing: 0.01rem;
   background-color: var(--bg-body);
   transition: color 400ms ease-in-out 0s, background-color 400ms ease-in-out 0s;
-  font-family: "LXGW WenKai", sans-serif
+  font-family: "LXGW WenKai", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", sans-serif
 }
 
 :root {
@@ -398,7 +398,7 @@ a:hover {
 
 .signature-hitokoto__quote {
   color: var(--color-text-a-hover);
-  font-family: "KaiTi", "Times New Roman", serif;
+  font-family: "KaiTi", "Times New Roman", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", serif;
   font-size: 1.6rem;
   line-height: 1.85;
   letter-spacing: 0.02em;
@@ -422,7 +422,7 @@ a:hover {
   display: inline;
   margin: 0;
   color: var(--color-text-sub);
-  font-family: "Times New Roman", "KaiTi", serif;
+  font-family: "Times New Roman", "KaiTi", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", serif;
   font-size: 1.2rem;
   line-height: 1.6;
   letter-spacing: 0.02em;
@@ -575,7 +575,7 @@ a:hover {
   margin: 0 15px;
   font-size: 1.65rem;
   font-weight: 400;
-  font-family: "LXGW WenKai", sans-serif;
+  font-family: "LXGW WenKai", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", sans-serif;
   text-align: center;
 }
 
