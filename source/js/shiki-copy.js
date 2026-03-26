@@ -10,12 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   blocks.forEach((block) => {
     let wrapper = block.parentElement
+    const code = block.querySelector('code')
 
     if (!wrapper || !wrapper.classList.contains('shiki-block')) {
       wrapper = document.createElement('div')
       wrapper.className = 'shiki-block'
       block.parentNode.insertBefore(wrapper, block)
       wrapper.appendChild(block)
+    }
+
+    if (code && code.classList.contains('language-text')) {
+      wrapper.classList.add('is-plain-text')
     }
 
     if (wrapper.querySelector('.shiki-copy-button')) return
@@ -27,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     button.innerHTML = clipboardIcon
 
     button.addEventListener('click', async () => {
-      const code = block.querySelector('code')
-
       if (!code) return
 
       try {

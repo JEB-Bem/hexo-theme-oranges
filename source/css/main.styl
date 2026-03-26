@@ -77,13 +77,13 @@ $theme-color = convert(hexo-config('themeColor'))
   color: $theme-color;
 }
 
-/* Keep block code compact so ASCII art renders without extra vertical gaps. */
+/* Keep normal code blocks readable; plain text blocks opt into tighter spacing separately. */
 .markdown-body pre,
 .markdown-body .highlight pre,
 .article-entry pre,
 .article-entry .highlight,
 .article-entry .highlight pre {
-  line-height: 1;
+  line-height: 1.5;
 }
 
 .markdown-body pre code,
