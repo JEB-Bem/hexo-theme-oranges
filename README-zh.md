@@ -1,6 +1,6 @@
 [English](https://github.com/zchengsite/hexo-theme-oranges/blob/master/README.md) | 简体中文
 
-# hexo-theme-oranges
+# JOranges
 
 > 一个简单的 hexo 主题
 
