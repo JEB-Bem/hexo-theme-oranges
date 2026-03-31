@@ -101,7 +101,32 @@
   padding: 0 10px;
 }
 
+.post-print-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+  border: 0;
+  color: var(--color-text-a);
+  background: transparent;
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: color 0.2s ease;
+}
+
+.post-print-action:hover {
+  color: var(--color-text-a-hover);
+}
+
 .github-edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   margin-top: 5rem;
   margin-bottom: 0.5rem;
 }
@@ -321,5 +346,96 @@
 
   .post-catalog .catalog-content {
     max-height: calc(min(70vh, 520px) - 54px);
+  }
+}
+
+@media print {
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  #app,
+  .flex-container,
+  .post-details.container,
+  .post-content {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .header,
+  .footer,
+  .tools-bar,
+  .post-catalog,
+  .comments-container,
+  .github-edit,
+  .prev-or-next {
+    display: none !important;
+  }
+
+  .post-details .post-title,
+  .post-details .post-attach,
+  .post-details .markdown-body {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .post-details .post-title {
+    padding: 0 0 10mm !important;
+    color: #000 !important;
+    text-align: center !important;
+  }
+
+  .post-details .post-attach {
+    display: block !important;
+    padding: 0 0 8mm !important;
+    color: #000 !important;
+    font-size: 11pt !important;
+    text-align: center !important;
+  }
+
+  .post-details .post-attach > :not(.post-pubtime) {
+    display: none !important;
+  }
+
+  .post-details .post-pubtime {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  .post-details .post-pubtime i {
+    display: none !important;
+  }
+
+  .post-details .markdown-body {
+    color: #000 !important;
+    font-size: 12pt !important;
+    line-height: 1.7 !important;
+  }
+
+  .post-details .markdown-body a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  .post-details .markdown-body pre,
+  .post-details .markdown-body blockquote,
+  .post-details .markdown-body table,
+  .post-details .markdown-body img {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .post-details .markdown-body img {
+    max-width: 95% !important;
+    height: auto !important;
+  }
+
+  .post-details .markdown-body blockquote {
+    width: 99% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }

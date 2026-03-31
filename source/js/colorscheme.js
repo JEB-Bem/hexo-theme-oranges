@@ -50,6 +50,8 @@ function applyThemeMode(themeMode, shouldPersist = false) {
     }
 }
 
+window.applyThemeMode = applyThemeMode
+
 const switchMode = () => {
     let currentMode = localStorage.getItem('color-mode') || 'auto'
     let nextMode = themeModes[(themeModes.indexOf(currentMode) + 1) % themeModes.length]
