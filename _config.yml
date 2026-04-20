@@ -233,18 +233,18 @@ footer:
       -
         enable: true
         id: busuanzi_value_site_pv
-        name: tv
-        unit: 
+        name: 访问
+        unit: 次
       -
         enable: true
         id: busuanzi_value_page_pv
-        name: av
-        unit: 
+        name: 阅读
+        unit: 次
       -
         enable: true
         id: busuanzi_value_site_uv
-        name: uv
-        unit: 
+        name: 访客
+        unit: 人
 
 # 文章搜索
 search:

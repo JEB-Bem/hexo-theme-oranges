@@ -12,10 +12,10 @@
 <div class="footer">
   <aside class="signature-hitokoto" id="signature-hitokoto" aria-live="polite" hidden>
     <div class="signature-hitokoto__main">
-      <p class="signature-hitokoto__quote" id="signature-hitokoto-quote">「师者，所以传道授业解惑也。」</p>
+      <p class="signature-hitokoto__quote" id="signature-hitokoto-quote">「欲买桂花同载酒，终不似，少年游。 」</p>
       <div class="signature-hitokoto__meta" id="signature-hitokoto-meta">
-        <p class="signature-hitokoto__author" id="signature-hitokoto-author">—— 韩愈</p>
-        <p class="signature-hitokoto__source" id="signature-hitokoto-source">《师说》</p>
+        <p class="signature-hitokoto__author" id="signature-hitokoto-author">—— 刘过</p>
+        <p class="signature-hitokoto__source" id="signature-hitokoto-source">《唐多令·芦叶满汀洲》</p>
       </div>
     </div>
     <a
@@ -60,6 +60,13 @@
       <% } %>  
     </div>
   <% } %>
+  <div class="footer-beian">
+    <a href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2024042284号</a><br/>
+  </div>
+  <div class="footer-beian">
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=52032202001891" rel="noreferrer" target="_blank">
+      <span style="display:flex;items-align:center;justify-content:center;gap:3px;"><img width=18px src="/images/beian.png"/>贵公网安备52032202001891号</span></a>
+  </div>
   <% if (theme.footer.views && theme.footer.views.enable) { %>
     <div class="footer-views">
       <% for(let item of theme.footer.views.item) {
@@ -69,13 +76,6 @@
       <% } %>
     </div>
   <% } %>
-  <div class="footer-beian">
-    <a href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2024042284号</a><br/>
-  </div>
-  <div class="footer-beian">
-    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=52032202001891" rel="noreferrer" target="_blank">
-      <span style="display:flex;items-align:center;justify-content:center;gap:3px;"><img width=18px src="/images/beian.png"/>贵公网安备52032202001891号</span></a>
-  </div>
 </div>
 
 <%- js(['/js/signature.js']) %>
