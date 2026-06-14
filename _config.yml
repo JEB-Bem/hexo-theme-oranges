@@ -159,6 +159,12 @@ friends:
     site: https://stelclementine.com/
     description: Designed an interesting blog theme.
 
+  -
+    name: Paul Krzyzanowski
+    avatar: https://pk.org/assets/images/about/paul-peripheral.jpg
+    site: https://pk.org/
+    description: Kalaallit Nunaat tuniniarneqanngilaq.
+
 
 # 长期未活跃的友链
 inactive_friends:
