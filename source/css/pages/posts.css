@@ -1,6 +1,6 @@
 .posts-index {
   width: min(var(--page-width), calc(100% - var(--page-edge-gap)));
-  font-family: "Satoshi", Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .posts-shell {

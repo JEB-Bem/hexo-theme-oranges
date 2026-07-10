@@ -7,6 +7,11 @@
   var ogDescription = page.ogdescription || page.description || config.description;
   var metaKeywords = page.keywords || config.keywords;
   var pageStyles = [];
+  var pageContent = page.content || '';
+  var isArticlePage = !is_home() && !is_archive() && !is_tag() && !is_category() && !page.type;
+  var hasMarkdownContent = isArticlePage || page.type === 'about' || page.type === 'friends' || page.type === 'presentations';
+  var hasPostImage = isArticlePage && /<img\b/i.test(pageContent);
+  var hasShikiBlock = isArticlePage && /class=["'][^"']*\bshiki\b/i.test(pageContent);
 
   if (Array.isArray(metaKeywords)) {
     metaKeywords = metaKeywords.join(', ');
@@ -120,40 +125,44 @@
     <link rel="apple-touch-icon" href="<%- faviconTouchHref %>">
   <% } %>
 
-  <!-- Raleway-Font -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
-
-  <!-- hexo site css -->
   <link rel="stylesheet" href="/css/main.css" />
+  <% if (hasMarkdownContent) { %>
+    <link rel="stylesheet" href="/css/github-markdown.css" />
+  <% } %>
   <% pageStyles.forEach(function(styleName) { %>
     <link rel="stylesheet" href="/css/pages/<%= styleName %>.css" />
   <% }) %>
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <link rel="preload" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css"></noscript>
 
-  <!-- katex -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"
-  />
-
-  <!-- jquery3.3.1 -->
-  <% if (theme.cdns && theme.cdns.jquery && theme.cdns.jquery.enable) { %>
-    <script defer type="text/javascript" src="<%- theme.cdns.jquery.url %>"></script>
-  <% } else { %>
-    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  <% if (isArticlePage) { %>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css"
+    />
   <% } %>
 
-  <!-- fancybox -->
-  <% if (theme.cdns && theme.cdns.fancybox && theme.cdns.fancybox.enable) { %>
-    <link href="<%- theme.cdns.fancybox.url.css %>" rel="stylesheet">
-    <script defer type="text/javascript" src="<%- theme.cdns.fancybox.url.js %>"></script>
-  <% } else { %>
-    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
-    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  <% if (hasPostImage) { %>
+    <% if (theme.cdns && theme.cdns.jquery && theme.cdns.jquery.enable) { %>
+      <script defer type="text/javascript" src="<%- theme.cdns.jquery.url %>"></script>
+    <% } else { %>
+      <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+    <% } %>
   <% } %>
-  <%- js(['/js/fancybox.js']) %>
-  <%- js(['/js/shiki-copy.js']) %>
+
+  <% if (hasPostImage) { %>
+    <% if (theme.cdns && theme.cdns.fancybox && theme.cdns.fancybox.enable) { %>
+      <link href="<%- theme.cdns.fancybox.url.css %>" rel="stylesheet">
+      <script defer type="text/javascript" src="<%- theme.cdns.fancybox.url.js %>"></script>
+    <% } else { %>
+      <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+      <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+    <% } %>
+    <%- js(['/js/fancybox.js']) %>
+  <% } %>
+  <% if (hasShikiBlock) { %>
+    <%- js(['/js/shiki-copy.js']) %>
+  <% } %>
 
   <% if(theme.gtag.enable) { %>
     <!-- Global site tag (gtag.js) - Google Analytics -->

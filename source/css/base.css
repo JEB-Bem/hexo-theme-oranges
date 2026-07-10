@@ -1,117 +1,17 @@
 @font-face {
-    font-family: "Times New Roman";
-    src: url("/fonts/times.woff2") format("woff2"),
-         url("/fonts/times.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: 400;
+  font-family: "LXGW WenKai";
+  src: url("/fonts/LXGWWenKai-Regular.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
 }
 
 @font-face {
-    font-family: "Times New Roman";
-    src: url("/fonts/timesi.woff2") format("woff2"),
-         url("/fonts/timesi.ttf") format("truetype");
-    font-display: swap;
-    font-style: italic;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "Times New Roman";
-    src: url("/fonts/timesbd.woff2") format("woff2"),
-         url("/fonts/timesbd.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: 700;
-}
-
-@font-face {
-    font-family: "Times New Roman";
-    src: url("/fonts/timesbi.woff2") format("woff2"),
-         url("/fonts/timesbi.ttf") format("truetype");
-    font-display: swap;
-    font-style: italic;
-    font-weight: 700;
-}
-
-@font-face {
-    font-family: "KaiTi";
-    src: url("/fonts/simkai.woff2") format("woff2"),
-         url("/fonts/simkai.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "KaiTi";
-    src: url("/fonts/simkai.woff2") format("woff2"),
-         url("/fonts/simkai.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "LXGW WenKai";
-    src: url("/fonts/LXGWWenKai-Light.woff2") format("woff2"),
-         url("/fonts/LXGWWenKai-Light.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: 300;
-}
-
-@font-face {
-    font-family: "LXGW WenKai";
-    src: url("/fonts/LXGWWenKai-Regular.woff2") format("woff2"),
-         url("/fonts/LXGWWenKai-Regular.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "LXGW WenKai";
-    src: url("/fonts/LXGWWenKai-Medium.woff2") format("woff2"),
-         url("/fonts/LXGWWenKai-Medium.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: "Maple Mono NF CN";
-    src: url("/fonts/MapleMono-NF-CN-Regular.woff2") format("woff2"),
-         url("/fonts/MapleMono-NF-CN-Regular.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "Maple Mono NF CN";
-    src: url("/fonts/MapleMono-NF-CN-Bold.woff2") format("woff2"),
-         url("/fonts/MapleMono-NF-CN-Bold.ttf") format("truetype");
-    font-display: swap;
-    font-style: normal;
-    font-weight: 700;
-}
-
-@font-face {
-    font-family: "Maple Mono NF CN";
-    src: url("/fonts/MapleMono-NF-CN-Italic.woff2") format("woff2"),
-         url("/fonts/MapleMono-NF-CN-Italic.ttf") format("truetype");
-    font-display: swap;
-    font-style: italic;
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "Maple Mono NF CN";
-    src: url("/fonts/MapleMono-NF-CN-BoldItalic.woff2") format("woff2"),
-         url("/fonts/MapleMono-NF-CN-BoldItalic.ttf") format("truetype");
-    font-display: swap;
-    font-style: italic;
-    font-weight: 700;
+  font-family: "LXGW WenKai";
+  src: url("/fonts/LXGWWenKai-Medium.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
 }
 
 * {
@@ -125,7 +25,8 @@ html, body {
   letter-spacing: 0.01rem;
   background-color: var(--bg-body);
   transition: color 400ms ease-in-out 0s, background-color 400ms ease-in-out 0s;
-  font-family: "LXGW WenKai", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", sans-serif
+  font-family: "LXGW WenKai", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", sans-serif;
+  font-synthesis-weight: auto;
 }
 
 :root {
@@ -403,7 +304,7 @@ a:hover {
 
 .signature-hitokoto__quote {
   color: var(--color-text-a-hover);
-  font-family: "KaiTi", "Times New Roman", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", serif;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "SimSun", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", serif;
   font-size: 1.6rem;
   line-height: 1.85;
   letter-spacing: 0.02em;
@@ -427,7 +328,7 @@ a:hover {
   display: inline;
   margin: 0;
   color: var(--color-text-sub);
-  font-family: "Times New Roman", "KaiTi", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", serif;
+  font-family: Georgia, "Times New Roman", "Kaiti SC", "STKaiti", "KaiTi", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", serif;
   font-size: 1.2rem;
   line-height: 1.6;
   letter-spacing: 0.02em;
@@ -488,7 +389,6 @@ a:hover {
   color: var(--color-text-base);
   font-size: 1.5rem;
   line-height: 21px;
-  /*font-family: 'Raleway', 'Helvetica Neue', 'Arial', sans-serif;*/
 }
 
 .post-item .title {
@@ -510,7 +410,6 @@ a:hover {
   font-size: 1.6rem;
   color: var(--color-text-a);
   margin-bottom: 20px;
-  /*font-family: 'Raleway', 'Helvetica Neue', 'Arial', sans-serif;*/
 }
 
 .navbar {
@@ -580,7 +479,7 @@ a:hover {
   margin: 0 15px;
   font-size: 1.65rem;
   font-weight: 400;
-  font-family: "LXGW WenKai", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", sans-serif;
+  font-family: "LXGW WenKai", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Twemoji Mozilla", sans-serif;
   text-align: center;
 }
 

@@ -52,7 +52,7 @@
       <a class="home-profile-link" href="<%- url_for(profilePath) %>">About me 👉</a>
     </div>
     <a class="home-profile-avatar" href="<%- url_for(profilePath) %>" aria-label="About">
-      <img no-lazy src="<%- profilePhoto %>" alt="<%- config.author %> avatar">
+      <img no-lazy src="<%- profilePhoto %>" alt="<%- config.author %> avatar" width="460" height="460" decoding="async" fetchpriority="high">
     </a>
   </section>
 
